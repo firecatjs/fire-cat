@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES5",
+    "sourceMap": false,
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "noUnusedLocals": false,
+    "noLib": false,
+    "useUnknownInCatchVariables": false,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "allowJs": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["node_modules", "build", "dist", "scripts", "webpack", "jest"]
+}

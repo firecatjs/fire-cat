@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "server"],
+  "ext": "ts",
+  "exec": "cross-env APP_ENV=dev ts-node -r tsconfig-paths/register server/index.ts"
+}
