@@ -1,10 +1,12 @@
 {
   "name": "fire-cat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "koa-based upper framework",
-  "main": "/src/index.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
