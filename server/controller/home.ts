@@ -6,6 +6,9 @@ export default class HomeController extends FireCatController {
   @Request()
   @Get('')
   async hello (ctx: Context) {
+    const f: any = ''
+
+    f.toFixed(2)
     ctx.body = 'hello world'
   }
 

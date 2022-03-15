@@ -1,5 +1,4 @@
 import {Context} from "../types";
-import FireCat from "../fire";
 
 export class FireCatDecorator {
 
@@ -63,7 +62,8 @@ export class FireCatDecorator {
               await original.call(this, ctx, next);
             } catch (e) {
               // err
-              FireCat.onServerError(ctx, e)
+              throw new Error(e)
+              // FireCat.onServerError(ctx, e)
             }
           }
         }
