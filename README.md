@@ -52,7 +52,7 @@ The Request decorator merges user request parameters so you don't have to differ
 ```typescript
 class MyController extends FireCatController {
   @Request()
-  @Get('/hello')
+  @Get('hello')
   hello(ctx: Context) {
     // can get parameters
     console.log(ctx.response.body)
@@ -60,7 +60,7 @@ class MyController extends FireCatController {
   }
   
   @Request()
-  @Post('/hello2')
+  @Post('hello2')
   hello2(ctx: Context) {
     // can also get parameters
     console.log(ctx.response.body)
@@ -74,7 +74,7 @@ class MyController extends FireCatController {
 The get decorator is used to register a get request to the route
 ```typescript
 class MyController extends FireCatController {
-  @Get('/hello')
+  @Get('hello')
   hello(ctx: Context) {
     ctx.body = "hello world"
   }
@@ -86,7 +86,7 @@ class MyController extends FireCatController {
 The post decorator is used to register a post request to the route
 ```typescript
 class MyController extends FireCatController {
-  @Post('/hello')
+  @Post('hello')
   hello(ctx: Context) {
     ctx.body = "hello world"
   }

@@ -53,7 +53,7 @@ Request装饰器会合并处理用户请求参数，这样你就不用区分get�
 ```typescript
 class MyController extends FireCatController {
   @Request()
-  @Get('/hello')
+  @Get('hello')
   hello(ctx: Context) {
     // 能够拿到参数
     console.log(ctx.response.body)
@@ -61,7 +61,7 @@ class MyController extends FireCatController {
   }
   
   @Request()
-  @Post('/hello2')
+  @Post('hello2')
   hello2(ctx: Context) {
     // 也能够拿到参数
     console.log(ctx.response.body)
@@ -75,7 +75,7 @@ class MyController extends FireCatController {
 get装饰器用来注册一个get请求到路由上
 ```typescript
 class MyController extends FireCatController {
-  @Get('/hello')
+  @Get('hello')
   hello(ctx: Context) {
     ctx.body = "hello world"
   }
@@ -87,7 +87,7 @@ class MyController extends FireCatController {
 post装饰器用来注册一个post请求到路由上
 ```typescript
 class MyController extends FireCatController {
-  @Post('/hello')
+  @Post('hello')
   hello(ctx: Context) {
     ctx.body = "hello world"
   }
