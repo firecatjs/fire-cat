@@ -1,6 +1,11 @@
 # fire-cat
 基于koa的上层框架封装
 
+## 语言
+[English](https://github.com/Jon-Millent/fire-cat/blob/main/README.md)
+[中文](https://github.com/Jon-Millent/fire-cat/blob/main/README.zh-cn.md)
+
+
 ## FireCat
 ```typescript
 import {FireCat} from "fire-cat";
@@ -15,6 +20,19 @@ console.log(
   `🐳️app is running at http://127.0.0.1:3010`,
 );
 ```
+
+## 使用项目模板起步
+### clone
+`git clone https://github.com/Jon-Millent/fire-cat-started.git`
+
+### 开发
+`npm run dev`
+
+### 打包
+`npm run build`
+
+### 部署
+`pm2 start ecosystem.config.js`
 
 ## FireCatController
 控制器

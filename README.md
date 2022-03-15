@@ -1,6 +1,10 @@
 # fire-cat
 koa-based upper frame encapsulation
 
+## Language
+[English](https://github.com/Jon-Millent/fire-cat/blob/main/README.md)
+[中文](https://github.com/Jon-Millent/fire-cat/blob/main/README.zh-cn.md)
+
 ## FireCat
 ```typescript
 import {FireCat} from "fire-cat";
@@ -15,6 +19,19 @@ console.log(
   `🐳️app is running at http://127.0.0.1:3010`,
 );
 ```
+
+## Getting started with project templates
+### clone
+`git clone https://github.com/Jon-Millent/fire-cat-started.git`
+
+### Development
+`npm run dev`
+
+### Pack
+`npm run build`
+
+### Deployment
+`pm2 start ecosystem.config.js`
 
 ## FireCatController
 controller
