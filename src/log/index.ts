@@ -62,7 +62,7 @@ export class FireCatLog {
     });
   }
 
-  logError(ctx) {
+  logError(ctx, error?: Error) {
     this.log.debug({
       url: ctx.url,
       status: ctx.status,
@@ -74,6 +74,7 @@ export class FireCatLog {
         host: ctx.headers.host,
         // 'user-agent': ctx.headers["user-agent"],
       },
+      error
     });
   }
 }

@@ -8,6 +8,6 @@ export declare class FireCatLog {
     constructor(props: FireCatLogConfig);
     action(): any;
     loggerAction(ctx: Context, next: Function): Promise<void>;
-    logError(ctx: any): void;
+    logError(ctx: any, error?: Error): void;
 }
 export {};

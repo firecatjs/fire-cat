@@ -13,7 +13,7 @@ app.koa.use(fireCatRouter.router.routes());
 
 app.onError = (ctx, err) => {
   console.log(err)
-  log.logError(ctx)
+  log.logError(ctx, err)
   ctx.body = {
     success: false,
     code: 500
