@@ -1,9 +1,13 @@
+import * as log4js from 'log4js';
 import { Context } from "../types";
+interface FireCatLogConfig {
+    filename?: string;
+}
 export declare class FireCatLog {
-    private log;
-    constructor();
+    log: log4js.Logger;
+    constructor(props: FireCatLogConfig);
     action(): any;
     loggerAction(ctx: Context, next: Function): Promise<void>;
-    loggerError(ctx: Context, next: Function): Promise<void>;
-    error(): any;
+    logError(ctx: any): void;
 }
+export {};

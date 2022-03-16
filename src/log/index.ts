@@ -1,10 +1,14 @@
 import * as log4js from 'log4js'
 import {Context} from "../types";
 
-export class FireCatLog {
-  private log: log4js.Logger;
+interface FireCatLogConfig {
+  filename?: string;
+}
 
-  constructor() {
+export class FireCatLog {
+  public log: log4js.Logger;
+
+  constructor(props: FireCatLogConfig) {
     // @ts-ignore
     log4js.configure({
       replaceConsole: true,
@@ -13,7 +17,7 @@ export class FireCatLog {
           // 设置类型为 dateFile
           type: 'dateFile',
           // 配置文件名为 test.log
-          filename: 'logs/app.log',
+          filename: props.filename || 'logs/app.log',
           // 指定编码格式为 utf-8
           encoding: 'utf-8',
           // 配置 layout，此处使用自定义模式 pattern
@@ -44,11 +48,11 @@ export class FireCatLog {
   }
 
   async loggerAction(ctx: Context, next: Function) {
+    await next()
     this.log.debug({
       url: ctx.url,
       status: ctx.status,
       ip: ctx.ip,
-      // query: ctx.query,
       queryString: ctx.querystring,
       body: ctx.body,
       headers: {
@@ -56,10 +60,9 @@ export class FireCatLog {
         'user-agent': ctx.headers["user-agent"],
       },
     });
-    await next()
   }
 
-  async loggerError(ctx: Context, next: Function) {
+  logError(ctx) {
     this.log.debug({
       url: ctx.url,
       status: ctx.status,
@@ -72,10 +75,5 @@ export class FireCatLog {
         // 'user-agent': ctx.headers["user-agent"],
       },
     });
-    await next()
-  }
-
-  error() {
-    return this.loggerError.bind(this)
   }
 }
