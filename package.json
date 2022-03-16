@@ -1,6 +1,6 @@
 {
   "name": "fire-cat",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "koa-based upper framework",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -23,7 +23,8 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
-    "log4js": "^6.4.2"
+    "log4js": "^6.4.2",
+    "mitt": "^3.0.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",

@@ -62,7 +62,7 @@ export class FireCatDecorator {
               await original.call(this, ctx, next);
             } catch (e) {
               // err
-              throw new Error(e)
+              throw e
               // FireCat.onServerError(ctx, e)
             }
           }

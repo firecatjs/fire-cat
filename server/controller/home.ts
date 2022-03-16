@@ -10,6 +10,14 @@ export default class HomeController extends FireCatController {
   }
 
   @Request()
+  @Get('error')
+  async error (ctx: Context) {
+    const g: any = ''
+    g.toFixed(2)
+    ctx.body = 'hello world'
+  }
+
+  @Request()
   @Get('about')
   async about (ctx: Context) {
     ctx.body = 'about page'

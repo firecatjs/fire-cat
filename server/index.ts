@@ -11,15 +11,14 @@ app.koa.use(log.action())
 
 app.koa.use(fireCatRouter.router.routes());
 
-app.koa.on('error', (ctx)=> {
+app.onError = (ctx, err) => {
+  console.log(err)
   log.logError(ctx)
-
-  ctx.status = 500
   ctx.body = {
     success: false,
     code: 500
   }
-})
+}
 
 app.koa.listen('3010');
 
