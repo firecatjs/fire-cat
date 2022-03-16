@@ -1,5 +1,14 @@
-# fire-cat
+<p align="center">
+  <img alt="logo" src="https://cdn.jsdelivr.net/gh/jon-millent/fire-cat/logo.png" width="200" max-width="100%">
+</p>
+
+<h1 align="center">
+Fire Cat
+</h1>
+<h4 align="center">
 koa-based upper frame encapsulation
+</h4>
+
 
 ## Language
 [English](https://github.com/Jon-Millent/fire-cat/blob/main/README.md)
