@@ -11,7 +11,7 @@ export default class FireCat {
             try {
                 await next();
             } catch (err) {
-                err.status = 500;
+                ctx.status = 500;
                 this.onError(ctx, err)
             }
         })
