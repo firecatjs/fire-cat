@@ -52,7 +52,7 @@ class MyController extends FireCatController {
 Request()
 ````
 The Request decorator merges user request parameters so you don't have to distinguish between `get` and `post` requests
-````text
+````typescript
 class MyController extends FireCatController {
   @Request()
   @Get('hello')

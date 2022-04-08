@@ -52,7 +52,7 @@ class MyController extends FireCatController {
 Request()
 ```
 Request装饰器会合并处理用户请求参数，这样你就不用区分`get`和`post`请求的差异
-```text
+```typescript
 class MyController extends FireCatController {
   @Request()
   @Get('hello')
