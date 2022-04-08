@@ -2,7 +2,7 @@
 
 ![logo](_media/icon.png ':size=200px')
 
-# FireCat <small>3.5</small>
+# FireCat <small>1.0.8</small>
 
 > Concise first koa upper framework
 
