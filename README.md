@@ -11,7 +11,7 @@ koa-based upper frame encapsulation
 
 
 ## Language
-[English Doc](https://jon-millent.github.io/fire-cat/#/en)
+[English Doc](https://jon-millent.github.io/fire-cat/#/en/)
 [中文文档](https://jon-millent.github.io/fire-cat/#/)
 
 ## FireCat
