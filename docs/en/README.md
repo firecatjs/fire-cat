@@ -58,7 +58,7 @@ class MyController extends FireCatController {
   @Get('hello')
   hello(ctx: Context) {
     // can get parameters
-    console.log(ctx.response.body)
+    console.log(ctx.request.body)
     ctx.body = "hello world"
   }
   
@@ -66,7 +66,7 @@ class MyController extends FireCatController {
   @Post('hello2')
   hello2(ctx: Context) {
     // can also get parameters
-    console.log(ctx.response.body)
+    console.log(ctx.request.body)
     ctx.body = "hello world"
   }
 }
