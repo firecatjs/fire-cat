@@ -3,6 +3,13 @@ import {Context} from "../../src/types";
 
 export default class HomeController extends FireCatController {
 
+  // constructor() {
+  //   super();
+  //
+  //   console.log(this.getInterceptor, '=====')
+  // }
+
+
   @Request()
   @Get('')
   async hello (ctx: Context) {

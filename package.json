@@ -24,7 +24,8 @@
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
     "log4js": "^6.4.2",
-    "mitt": "^3.0.0"
+    "mitt": "^3.0.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",

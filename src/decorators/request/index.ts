@@ -14,28 +14,22 @@ function registerRouterPut(target, decorator, path: string, method: string) {
 }
 
 export function Get(path: string) {
-  return FireCatDecorator.register({
-    before: (target, key, decorator)=> {
-      registerRouterPut(target, decorator, path, 'get')
-    }
+  return FireCatDecorator.registerImplement((target, key, decorator)=> {
+    registerRouterPut(target, decorator, path, 'get')
   })
 }
 
 export function Post(path: string) {
-  return FireCatDecorator.register({
-    before: (target, key, decorator)=> {
-      registerRouterPut(target, decorator, path, 'post')
-    }
+  return FireCatDecorator.registerImplement((target, key, decorator)=> {
+    registerRouterPut(target, decorator, path, 'post')
   })
 }
 
 export function Request() {
-  return FireCatDecorator.register({
-    wrap: (ctx, next)=> {
-      if (ctx.method == 'GET') {
-        ctx.request.body = ctx.request.query
-      }
-      next()
+  return FireCatDecorator.registerInterceptor((ctx, next)=> {
+    if (ctx.method == 'GET') {
+      ctx.request.body = ctx.request.query
     }
+    next()
   })
 }
