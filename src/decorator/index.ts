@@ -6,7 +6,8 @@ export class FireCatDecorator {
   // 注册拦截器
   static registerInterceptor(
     interceptor: (ctx: Context, next: Function, decorator: {target: any, propertyKey: string, descriptor: PropertyDescriptor}) => void,
-    type: InterceptorType
+    type: InterceptorType,
+    data?: any
   ) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
       let store = getDecoratorStoreMetaData(target, propertyKey)
@@ -15,7 +16,7 @@ export class FireCatDecorator {
         setDecoratorStoreMetaData(
           store = new DecoratorStore(),
           target,
-          propertyKey
+          propertyKey,
         )
       }
 
@@ -31,7 +32,8 @@ export class FireCatDecorator {
         store.appendInterceptor({
           controller: interceptor,
           propertyKey,
-          type
+          type,
+          data
         })
       }
 

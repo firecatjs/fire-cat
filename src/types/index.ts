@@ -19,6 +19,7 @@ export interface InterceptorArrayInterface {
   controller: Function;
   propertyKey: string;
   type: InterceptorType;
+  data?: any
 }
 
 export interface DecoratorStoreRouterInterFace {
@@ -26,4 +27,9 @@ export interface DecoratorStoreRouterInterFace {
   controller: Function;
   method: string;
   propertyKey: string;
+}
+
+export interface CreateSchemaInterFace {
+  jsonRule: object;
+  v:  Validator.SyncCheckFunction
 }
