@@ -9,3 +9,21 @@ export interface FireValidatorErrorType {
 export interface SyncCheckFunction extends Validator.SyncCheckFunction {}
 
 export interface Context extends Koa.Context {}
+
+export enum InterceptorType {
+  WRAP, // 普通拦截器
+  RULE, // 验证拦截器
+}
+
+export interface InterceptorArrayInterface {
+  controller: Function;
+  propertyKey: string;
+  type: InterceptorType;
+}
+
+export interface DecoratorStoreRouterInterFace {
+  path: string;
+  controller: Function;
+  method: string;
+  propertyKey: string;
+}

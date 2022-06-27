@@ -1,7 +1,7 @@
 import * as Validator from "fastest-validator";
 import {FireCatDecorator} from '../../decorator'
 import {fastValidator} from './fastValidator';
-import {Context} from "../../types";
+import {Context, InterceptorType} from "../../types";
 import {FireValidatorErrorType} from "../../types";
 
 export function FireCatVerifyWrap(wrap: (message: FireValidatorErrorType | null, ctx: Context, next: Function)=> void) {
@@ -10,7 +10,7 @@ export function FireCatVerifyWrap(wrap: (message: FireValidatorErrorType | null,
       const bodyData = ctx.method == 'GET' ? ctx.request.query : ctx.request.body
       const errors = fastValidator(bodyData, jsonRule);
       await wrap(errors, ctx, next)
-    })
+    }, InterceptorType.RULE)
   }
 }
 
