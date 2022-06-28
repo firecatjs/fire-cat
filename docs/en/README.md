@@ -199,18 +199,14 @@ Many times, we use the koa middleware to implement the function of the intercept
 ```typescript
 import {FireCatDecorator} from "fire-cat";
 
-// verify login
 export const AuthLogin = function () {
-  return FireCatDecorator.register({
-    wrap(ctx, next) {
-      // Simulate parsing out user data
-      ctx.state.userInfo = {
-        id: 1,
-        name: 'fake',
-        some: 'bar'
-      }
-      next()
+  return FireCatDecorator.registerImplement((ctx, next) => {
+    ctx.state.userInfo = {
+      id: 1,
+      name: 'fake',
+      some: 'bar'
     }
+    next()
   })
 }
 ````

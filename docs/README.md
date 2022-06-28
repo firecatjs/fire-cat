@@ -201,16 +201,14 @@ import {FireCatDecorator} from "fire-cat";
 
 // 验证登陆
 export const AuthLogin = function () {
-  return FireCatDecorator.register({
-    wrap(ctx, next) {
-      // 模拟解析出用户数据
-      ctx.state.userInfo = {
-        id: 1,
-        name: 'fake',
-        some: 'bar'
-      }
-      next()
+  return FireCatDecorator.registerImplement((ctx, next) => {
+    // 模拟解析出用户数据
+    ctx.state.userInfo = {
+      id: 1,
+      name: 'fake',
+      some: 'bar'
     }
+    next()
   })
 }
 ```
