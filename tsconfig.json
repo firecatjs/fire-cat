@@ -22,7 +22,8 @@
     "baseUrl": "./",
     "allowJs": true,
     "types": [
-      "reflect-metadata"
+      "reflect-metadata",
+      "jest"
     ]
   },
   "include": [
