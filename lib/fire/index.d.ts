@@ -1,4 +1,3 @@
-/// <reference types="koa-bodyparser" />
 import * as Koa from 'koa';
 import { Context } from "../types";
 export default class FireCat {
