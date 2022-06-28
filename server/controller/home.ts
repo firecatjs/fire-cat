@@ -5,8 +5,14 @@ export default class HomeController extends FireCatController {
 
   @Request()
   @Get('')
-  async hello (ctx: Context) {
+  async index (ctx: Context) {
     ctx.body = 'hello world'
+  }
+
+  @Request()
+  @Get('find')
+  async hello (ctx: Context) {
+    ctx.body = 'find world'
   }
 
   @Request()

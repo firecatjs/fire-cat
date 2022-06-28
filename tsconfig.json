@@ -20,10 +20,15 @@
     "noLib": false,
     "useUnknownInCatchVariables": false,
     "baseUrl": "./",
-    "allowJs": true
+    "allowJs": true,
+    "types": [
+      "reflect-metadata",
+      "jest"
+    ]
   },
   "include": [
     "src/**/*"
   ],
-  "exclude": ["node_modules", "build", "dist", "scripts", "webpack", "jest"]
+  "exclude": ["node_modules", "build", "dist", "scripts", "webpack", "jest"],
+
 }

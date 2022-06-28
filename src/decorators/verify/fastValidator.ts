@@ -1,10 +1,13 @@
 import * as ValidatorTypes from "fastest-validator";
-import {FireValidatorErrorType} from "../../types";
+import {CreateSchemaInterFace, FireValidatorErrorType} from "../../types";
 const Validator = require("fastest-validator");
 const v = new Validator();
 
-export function createSchema(jsonRule) {
-  return v.compile(jsonRule);
+export function createSchema(jsonRule): CreateSchemaInterFace {
+  return {
+    jsonRule,
+    v: v.compile(jsonRule)
+  };
 }
 
 export function fastValidator(jsonValue = {}, schema: ValidatorTypes.SyncCheckFunction): FireValidatorErrorType | null {

@@ -1,41 +1,34 @@
-import {FireCatDecorator} from '../../decorator'
+import {FireCatDecorator, getDecoratorStoreMetaControllerData} from '../../decorator'
+import {InterceptorType} from "../../types";
 
-function registerRouterPut(target, decorator, path: string, method: string) {
+function registerRouterPut(target, propertyKey, decorator, path: string, method: string) {
   try {
-    target.decoratorList = target.decoratorList || []
-    target.decoratorList.push({
-      path: path ? ('/' + path) : path,
-      controller: decorator.value,
-      method
-    })
+    const store = getDecoratorStoreMetaControllerData(target)
+    if (store) {
+      store.appendRouter(decorator, path, method, propertyKey)
+    }
   } catch (e) {
     //
   }
 }
 
 export function Get(path: string) {
-  return FireCatDecorator.register({
-    before: (target, key, decorator)=> {
-      registerRouterPut(target, decorator, path, 'get')
-    }
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'get')
   })
 }
 
 export function Post(path: string) {
-  return FireCatDecorator.register({
-    before: (target, key, decorator)=> {
-      registerRouterPut(target, decorator, path, 'post')
-    }
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'post')
   })
 }
 
 export function Request() {
-  return FireCatDecorator.register({
-    wrap: (ctx, next)=> {
-      if (ctx.method == 'GET') {
-        ctx.request.body = ctx.request.query
-      }
-      next()
+  return FireCatDecorator.registerInterceptor((ctx, next)=> {
+    if (ctx.method == 'GET') {
+      ctx.request.body = ctx.request.query
     }
-  })
+    next()
+  }, InterceptorType.WRAP)
 }
