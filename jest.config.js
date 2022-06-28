@@ -25,6 +25,10 @@ module.exports = {
     "/node_modules/",
     "/test/",
     "/build/",
-    "/dev/"
+    "/dev/",
+    "/lib/",
+    "/docs/",
+    "/logs/",
+    "/server/",
   ]
 }
