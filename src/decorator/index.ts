@@ -1,12 +1,15 @@
 import {Context, DecoratorStoreRouterInterFace, InterceptorArrayInterface, InterceptorType} from "../types";
 import 'reflect-metadata'
 
+const DecoratorControllerNameSpace = 'decorator_controller'
+const DecoratorStoreNameSpace = 'decorator_store'
+
 export class FireCatDecorator {
 
   // 注册拦截器
   static registerInterceptor(
     interceptor: (ctx: Context, next: Function, decorator: {target: any, propertyKey: string, descriptor: PropertyDescriptor}) => void,
-    type: InterceptorType,
+    type: InterceptorType = InterceptorType.WRAP,
     data?: any
   ) {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -162,7 +165,7 @@ function getMetaData(
 
 export function setDecoratorStoreMetaControllerData(value, target) {
   setMetaData(
-    'decorator_controller',
+    DecoratorControllerNameSpace,
     value,
     target,
   )
@@ -170,14 +173,14 @@ export function setDecoratorStoreMetaControllerData(value, target) {
 
 export function getDecoratorStoreMetaControllerData(target): DecoratorControllerStore | null {
   return getMetaData(
-    'decorator_controller',
+    DecoratorControllerNameSpace,
     target,
   )
 }
 
 export function setDecoratorStoreMetaData(value, target, propertyKey: string) {
   setMetaData(
-    'decorator_store',
+    DecoratorStoreNameSpace,
     value,
     target,
     propertyKey
@@ -186,7 +189,7 @@ export function setDecoratorStoreMetaData(value, target, propertyKey: string) {
 
 export function getDecoratorStoreMetaData(target, propertyKey: string): DecoratorStore | null {
   return getMetaData(
-    'decorator_store',
+    DecoratorStoreNameSpace,
     target,
     propertyKey
   )
