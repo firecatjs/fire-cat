@@ -17,6 +17,7 @@ export declare class DecoratorStore {
     isInit: boolean;
     private interceptorArray;
     appendInterceptor(wrap: InterceptorArrayInterface): void;
+    getInterceptor(): InterceptorArrayInterface[];
     initializationAction(target: any, propertyKey: any, descriptor: any): void;
 }
 export declare function setDecoratorStoreMetaControllerData(value: any, target: any): void;

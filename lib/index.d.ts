@@ -6,4 +6,5 @@ import { FireCatDecorator } from "./decorator";
 import { FireCatVerify, FireCatVerifyWrap } from "./decorators/verify/verify";
 import { Get, Post, Request } from "./decorators/request";
 import { createSchema } from './decorators/verify/fastValidator';
-export { FireCat, FireCatController, FireCatRouter, FireCatLog, FireCatDecorator, FireCatVerify, Get, Post, Request, FireCatVerifyWrap, createSchema, };
+import { FireDocument } from "./document";
+export { FireCat, FireCatController, FireCatRouter, FireCatLog, FireCatDecorator, FireDocument, FireCatVerify, Get, Post, Request, FireCatVerifyWrap, createSchema, };
