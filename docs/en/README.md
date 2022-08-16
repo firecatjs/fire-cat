@@ -221,6 +221,17 @@ class MyController extends FireCatController {
   }
 }
 ````
+
+## Documentation Services
+### Enable document service
+```typescript
+fireCatRouter.enableDocument()
+````
+Custom document service path
+```typescript
+fireCatRouter.enableDocument('/document')
+````
+
 ## Best Practices
 ### Implement your own controller
 The advantage of implementing your own controller is that you can flexibly extend the controller method.

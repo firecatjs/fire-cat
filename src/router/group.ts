@@ -33,8 +33,8 @@ export default class FireRouterGroup {
 		return this.concat(path, action, 'post')
 	}
 
-	delete(path: string, action: Router.IMiddleware<any, any>) {
-		return this.concat(path, action, 'delete')
+	del(path: string, action: Router.IMiddleware<any, any>) {
+		return this.concat(path, action, 'del')
 	}
 
 	put(path: string, action: Router.IMiddleware<any, any>) {
@@ -47,6 +47,10 @@ export default class FireRouterGroup {
 
 	head(path: string, action: Router.IMiddleware<any, any>) {
 		return this.concat(path, action, 'head')
+	}
+
+	all(path: string, action: Router.IMiddleware<any, any>) {
+		return this.concat(path, action, 'all')
 	}
 
 	controller(path: string, control: FireCatController) {

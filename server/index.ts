@@ -9,6 +9,9 @@ const log = new FireCatLog({
 
 app.koa.use(log.action())
 
+// start document service
+fireCatRouter.enableDocument('/document')
+
 app.koa.use(fireCatRouter.router.routes());
 
 app.onError = (ctx, err) => {

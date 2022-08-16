@@ -24,6 +24,30 @@ export function Post(path: string) {
   })
 }
 
+export function Del(path: string) {
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'del')
+  })
+}
+
+export function Head(path: string) {
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'head')
+  })
+}
+
+export function Put(path: string) {
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'put')
+  })
+}
+
+export function All(path: string) {
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'all')
+  })
+}
+
 export function Request() {
   return FireCatDecorator.registerInterceptor((ctx, next)=> {
     if (ctx.method == 'GET') {

@@ -1,6 +1,7 @@
 import * as Router from 'koa-router';
-import {getDecoratorStoreMetaControllerData, getDecoratorStoreMetaData} from "../decorator";
+import {getDecoratorStoreMetaControllerData} from "../decorator";
 import 'reflect-metadata'
+import {FireDocument} from "../document";
 
 export class FireCatController {
 
@@ -15,6 +16,7 @@ export class FireCatController {
         list.forEach(item => {
           router[item.method](subPath + item.path, item.controller.bind(context))
         })
+        FireDocument.appendDocument(subPath, store, this)
       } catch (e) {
       }
     }
