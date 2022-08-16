@@ -1,6 +1,6 @@
 <!-- _coverpage.md -->
 
-![logo](_media/icon.png ':size=200px')
+![logo](_media/icon-new.png ':size=240px')
 
 # FireCat <small>1.0.8</small>
 
