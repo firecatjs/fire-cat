@@ -32,6 +32,10 @@ export class FireDocument {
             rule: []
           }
 
+          if (!mission.path) {
+            mission.path = '/'
+          }
+
           const methodStore = getDecoratorStoreMetaData(item.target, item2.propertyKey)
 
           if (methodStore) {
