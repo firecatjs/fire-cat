@@ -1,5 +1,6 @@
 import * as Validator from "fastest-validator";
 import * as Koa from "koa";
+import {DecoratorControllerStore} from "../decorator";
 
 export interface FireValidatorErrorType {
   message: string;
@@ -32,4 +33,20 @@ export interface DecoratorStoreRouterInterFace {
 export interface CreateSchemaInterFace {
   jsonRule: object;
   v:  Validator.SyncCheckFunction
+}
+
+export interface FireDocumentStoreInterFace {
+  path: string;
+  context: DecoratorControllerStore;
+  target: any;
+}
+
+export interface FireDocumentInterFace {
+  body: FireDocumentBodyInterFace[];
+}
+
+export interface FireDocumentBodyInterFace {
+  path: string;
+  methods: string;
+  rule: any[];
 }

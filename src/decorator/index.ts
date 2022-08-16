@@ -1,7 +1,12 @@
 import {Context, DecoratorStoreRouterInterFace, InterceptorArrayInterface, InterceptorType} from "../types";
 import 'reflect-metadata'
 
+// class存储的数据
+// 例如：路由
 const DecoratorControllerNameSpace = 'decorator_controller'
+
+// class下的方法名字存储的数据
+// 例如：方法拦截器
 const DecoratorStoreNameSpace = 'decorator_store'
 
 export class FireCatDecorator {
@@ -93,6 +98,9 @@ export class DecoratorStore {
   public appendInterceptor(wrap: InterceptorArrayInterface) {
     this.interceptorArray.unshift(wrap)
   }
+  public getInterceptor() {
+    return this.interceptorArray
+  }
 
   // 初始化函数
   public initializationAction(target, propertyKey, descriptor) {
@@ -163,6 +171,7 @@ function getMetaData(
 }
 
 
+// 设置class下对应的控制器存储的DecoratorControllerStore
 export function setDecoratorStoreMetaControllerData(value, target) {
   setMetaData(
     DecoratorControllerNameSpace,
@@ -171,6 +180,7 @@ export function setDecoratorStoreMetaControllerData(value, target) {
   )
 }
 
+// 获取class下对应的控制器存储的DecoratorControllerStore
 export function getDecoratorStoreMetaControllerData(target): DecoratorControllerStore | null {
   return getMetaData(
     DecoratorControllerNameSpace,
@@ -178,6 +188,7 @@ export function getDecoratorStoreMetaControllerData(target): DecoratorController
   )
 }
 
+// 设置class下对应的方法名存储的DecoratorStore
 export function setDecoratorStoreMetaData(value, target, propertyKey: string) {
   setMetaData(
     DecoratorStoreNameSpace,
@@ -187,6 +198,7 @@ export function setDecoratorStoreMetaData(value, target, propertyKey: string) {
   )
 }
 
+// 获取class下对应的方法名存储的DecoratorStore
 export function getDecoratorStoreMetaData(target, propertyKey: string): DecoratorStore | null {
   return getMetaData(
     DecoratorStoreNameSpace,
