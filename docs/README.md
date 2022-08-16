@@ -223,6 +223,17 @@ class MyController extends FireCatController {
   }
 }
 ```
+
+## 文档服务
+### 开启文档服务
+```typescript
+fireCatRouter.enableDocument()
+```
+自定义文档服务路径
+```typescript
+fireCatRouter.enableDocument('/document')
+```
+
 ## 最佳实践
 ### 实现自己的控制器
 实现自己的控制器的好处，是可以灵活拓展控制器方法。
