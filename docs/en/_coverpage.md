@@ -1,8 +1,8 @@
 <!-- _coverpage.md -->
 
-![logo](_media/icon.png ':size=200px')
+![logo](https://cdn.jsdelivr.net/gh/jon-millent/fire-cat/logo-new.png ':size=200px')
 
-# FireCat <small>1.0.8</small>
+# FireCat <small>2.0.2</small>
 
 > Concise first koa upper framework
 

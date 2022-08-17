@@ -1,8 +1,8 @@
 <!-- _coverpage.md -->
 
-![logo](_media/icon-new.png ':size=240px')
+![logo](https://cdn.jsdelivr.net/gh/jon-millent/fire-cat/logo-new.png ':size=240px')
 
-# FireCat <small>1.0.8</small>
+# FireCat <small>2.0.2</small>
 
 > 简洁至上的koa上层框架
 

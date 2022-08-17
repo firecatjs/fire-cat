@@ -231,6 +231,30 @@ Custom document service path
 ```typescript
 fireCatRouter.enableDocument('/document')
 ````
+custom document description
+```typescript
+fireCatRouter.enableDocument('/document', {
+   title: 'Interface Documentation',
+   description: 'This is the interface document',
+   date: '2022-05-20',
+   version: '1.0.0'
+})
+````
+
+#### ApiDescription
+````text
+ApiDescription(des: string)
+````
+Describe the request and render it into the final document
+```typescript
+class MyController extends FireCatController {
+   @ApiDescription('This is a request')
+   @Post('hello')
+   hello(ctx: Context) {
+     ctx.body = "hello world"
+   }
+}
+````
 
 ## Best Practices
 ### Implement your own controller

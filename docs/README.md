@@ -233,6 +233,30 @@ fireCatRouter.enableDocument()
 ```typescript
 fireCatRouter.enableDocument('/document')
 ```
+自定义文档描述
+```typescript
+fireCatRouter.enableDocument('/document', {
+  title: '接口文档',
+  description: '这是接口文档',
+  date: '2022-05-20',
+  version: '1.0.0'
+})
+```
+
+#### ApiDescription
+```text
+ApiDescription(des: string)
+```
+对请求进行描述，会渲染到最终的文档里面
+```typescript
+class MyController extends FireCatController {
+  @ApiDescription('这是一个请求')
+  @Post('hello')
+  hello(ctx: Context) {
+    ctx.body = "hello world"
+  }
+}
+```
 
 ## 最佳实践
 ### 实现自己的控制器
