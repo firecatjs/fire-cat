@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="logo" src="https://cdn.jsdelivr.net/gh/jon-millent/fire-cat/logo-new.png" width="200" max-width="100%">
+  <img alt="logo" src="https://cdn.jsdelivr.net/npm/fire-cat@2.0.2/logo-new.png" width="220" max-width="100%">
 </p>
 
 <h1 align="center">
