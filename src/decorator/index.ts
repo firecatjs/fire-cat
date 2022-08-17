@@ -1,4 +1,10 @@
-import {Context, DecoratorStoreRouterInterFace, InterceptorArrayInterface, InterceptorType} from "../types";
+import {
+  Context,
+  DecoratorDocDesInterFace,
+  DecoratorStoreRouterInterFace,
+  InterceptorArrayInterface,
+  InterceptorType
+} from "../types";
 import 'reflect-metadata'
 
 // class存储的数据
@@ -72,8 +78,11 @@ export class FireCatDecorator {
 
 // 控制器盒子
 export class DecoratorControllerStore {
+
   // router
   private routerArray: DecoratorStoreRouterInterFace[] = []
+  private docDesArray: DecoratorDocDesInterFace[] = []
+
   public getRouterArray() {
     return this.routerArray
   }
@@ -84,6 +93,13 @@ export class DecoratorControllerStore {
       method,
       propertyKey
     })
+  }
+
+  public getDocDesArray() {
+    return this.docDesArray
+  }
+  public appendDocDes(doc: DecoratorDocDesInterFace) {
+    this.docDesArray.push(doc)
   }
 }
 

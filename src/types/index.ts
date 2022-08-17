@@ -1,6 +1,7 @@
 import * as Validator from "fastest-validator";
 import * as Koa from "koa";
 import {DecoratorControllerStore} from "../decorator";
+import {ApiDescription} from "../decorators/doc";
 
 export interface FireValidatorErrorType {
   message: string;
@@ -28,6 +29,11 @@ export interface DecoratorStoreRouterInterFace {
   controller: Function;
   method: string;
   propertyKey: string;
+  description?: string;
+}
+export interface DecoratorDocDesInterFace {
+  propertyKey: string;
+  description: string;
 }
 
 export interface CreateSchemaInterFace {
@@ -41,12 +47,23 @@ export interface FireDocumentStoreInterFace {
   target: any;
 }
 
+export interface FireDocumentHeadInterFace {
+  title?: string;
+  version?: string | number;
+  date?: string | Date;
+  description?: string;
+}
 export interface FireDocumentInterFace {
   body: FireDocumentBodyInterFace[];
+  title?: string;
+  version?: string | number;
+  date?: string | Date;
+  description?: string;
 }
 
 export interface FireDocumentBodyInterFace {
   path: string;
   methods: string;
   rule: any[];
+  description?: string;
 }

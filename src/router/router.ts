@@ -2,6 +2,7 @@ import * as Router from 'koa-router';
 import FireRouterGroup from "../router/group";
 import {FireCatController} from "../controller";
 import {FireDocument} from "../document";
+import {FireDocumentHeadInterFace} from "../types";
 
 export class FireCatRouter {
   public router: Router;
@@ -10,8 +11,13 @@ export class FireCatRouter {
     this.router = new Router();
   }
 
-  enableDocument(path: string = '/document') {
-    FireDocument.server(this, path)
+  enableDocument(path: string = '/document', config?: FireDocumentHeadInterFace) {
+    FireDocument.server(this, path, config || {
+      title: 'api document',
+      date: new Date(),
+      description: 'a api document',
+      version: '1.0.0'
+    })
   }
 
   group(path: string, callback: (router: FireRouterGroup)=> void) {

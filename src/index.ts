@@ -4,9 +4,10 @@ import {FireCatRouter} from "./router/router";
 import {FireCatLog} from "./log";
 import {FireCatDecorator} from "./decorator";
 import {FireCatVerify, FireCatVerifyWrap} from "./decorators/verify/verify";
-import {Get, Post, Request} from "./decorators/request"
+import {Get, Post, Del, Head, Put, Update, Request} from "./decorators/request"
 import {createSchema} from './decorators/verify/fastValidator'
 import {FireDocument} from "./document";
+import {ApiDescription} from './decorators/doc'
 
 export {
   FireCat,
@@ -19,7 +20,14 @@ export {
   FireCatVerify,
   Get,
   Post,
+  Del,
+  Head,
+  Put,
+  Update,
   Request,
+  ApiDescription,
+
   FireCatVerifyWrap,
+
   createSchema,
 }

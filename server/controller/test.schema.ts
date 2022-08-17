@@ -6,6 +6,7 @@ export default {
       type: 'string',
       empty: false,
       max: 255,
+      description: '名字字段'
     },
   }),
 }

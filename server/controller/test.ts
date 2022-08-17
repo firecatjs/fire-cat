@@ -1,4 +1,4 @@
-import {FireCatController, Get, Request} from "../../src";
+import {ApiDescription, FireCatController, Get, Request} from "../../src";
 import {Context} from "../../src/types";
 import schema from './test.schema'
 import {FireCatVerify} from "../../src";
@@ -7,12 +7,14 @@ export default class TestController extends FireCatController {
 
   @Request()
   @Get('news')
+  @ApiDescription('新闻页面')
   async hello2 (ctx: Context) {
     ctx.body = 'news list'
   }
 
   @Request()
   @Get('show')
+  @ApiDescription('验证展示页面')
   @FireCatVerify(schema.show)
   async show (ctx: Context) {
     ctx.body = 'your name is ' + ctx.request.body.name

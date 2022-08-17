@@ -36,6 +36,12 @@ export function Head(path: string) {
   })
 }
 
+export function Update(path: string) {
+  return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
+    registerRouterPut(target, propertyKey, decorator, path, 'update')
+  })
+}
+
 export function Put(path: string) {
   return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
     registerRouterPut(target, propertyKey, decorator, path, 'put')

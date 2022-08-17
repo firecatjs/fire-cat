@@ -1,5 +1,5 @@
 // 接口文档服务
-import {FireDocumentInterFace, FireDocumentStoreInterFace, InterceptorType} from "../types";
+import {FireDocumentHeadInterFace, FireDocumentInterFace, FireDocumentStoreInterFace, InterceptorType} from "../types";
 import {DecoratorControllerStore, getDecoratorStoreMetaData} from "../decorator";
 import {FireCatRouter} from "../router/router";
 
@@ -14,11 +14,15 @@ export class FireDocument {
     })
   }
 
-  static server(router: FireCatRouter, path: string) {
+  static server(router: FireCatRouter, path: string, config: FireDocumentHeadInterFace) {
     router.router.get(path, (ctx, next)=> {
 
       const doc: FireDocumentInterFace = {
-        body: []
+        title: config.title,
+        description: config.description,
+        date: config.date,
+        version: config.version,
+        body: [],
       }
 
       FireDocument.documents.forEach(item => {
@@ -29,7 +33,8 @@ export class FireDocument {
           const mission = {
             path: item.path + item2.path,
             methods: item2.method,
-            rule: []
+            rule: [],
+            description: item2.description,
           }
 
           if (!mission.path) {
