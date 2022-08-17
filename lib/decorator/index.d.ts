@@ -1,4 +1,4 @@
-import { Context, DecoratorStoreRouterInterFace, InterceptorArrayInterface, InterceptorType } from "../types";
+import { Context, DecoratorDocDesInterFace, DecoratorStoreRouterInterFace, InterceptorArrayInterface, InterceptorType } from "../types";
 import 'reflect-metadata';
 export declare class FireCatDecorator {
     static registerInterceptor(interceptor: (ctx: Context, next: Function, decorator: {
@@ -10,8 +10,11 @@ export declare class FireCatDecorator {
 }
 export declare class DecoratorControllerStore {
     private routerArray;
+    private docDesArray;
     getRouterArray(): DecoratorStoreRouterInterFace[];
     appendRouter(decorator: any, path: string, method: string, propertyKey: string): void;
+    getDocDesArray(): DecoratorDocDesInterFace[];
+    appendDocDes(doc: DecoratorDocDesInterFace): void;
 }
 export declare class DecoratorStore {
     isInit: boolean;
