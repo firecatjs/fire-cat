@@ -1,6 +1,6 @@
 <!-- _coverpage.md -->
 
-![logo](https://cdn.jsdelivr.net/gh/jon-millent/fire-cat/logo-new.png ':size=240px')
+![logo](https://cdn.jsdelivr.net/npm/fire-cat@2.0.2/logo-new.png ':size=240px')
 
 # FireCat <small>2.0.2</small>
 
