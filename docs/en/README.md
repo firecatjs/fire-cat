@@ -47,30 +47,9 @@ class MyController extends FireCatController {
 }
 ````
 ### Decorators
-#### Request
-```typescript
-Request()
-````
-The Request decorator merges user request parameters so you don't have to distinguish between `get` and `post` requests
-````typescript
-class MyController extends FireCatController {
-  @Request()
-  @Get('hello')
-  hello(ctx: Context) {
-    // can get parameters
-    console.log(ctx.request.body)
-    ctx.body = "hello world"
-  }
-  
-  @Request()
-  @Post('hello2')
-  hello2(ctx: Context) {
-    // can also get parameters
-    console.log(ctx.request.body)
-    ctx.body = "hello world"
-  }
-}
-````
+### request decorator
+fire-cat has built-in `Get`, `Post`, `Del` and other request decorators, these request decorators must be written at the top level of the decorator.
+
 #### Get
 ````text
 Get(path: string)
@@ -97,6 +76,32 @@ class MyController extends FireCatController {
   }
 }
 ````
+
+#### Request
+```typescript
+Request()
+````
+The Request decorator merges user request parameters so you don't have to distinguish between `get` and `post` requests
+````typescript
+class MyController extends FireCatController {
+  @Get('hello')
+  @Request()
+  hello(ctx: Context) {
+    // can get parameters
+    console.log(ctx.request.body)
+    ctx.body = "hello world"
+  }
+
+  @Post('hello2')
+  @Request()
+  hello2(ctx: Context) {
+    // can also get parameters
+    console.log(ctx.request.body)
+    ctx.body = "hello world"
+  }
+}
+````
+
 ### Routing
 routing control
 ```typescript
@@ -183,8 +188,8 @@ export default {
 import {Post, Request} from "fire-cat";
 
 export default class BookController extends FireCatController {
-  @Request()
   @Post('create')
+  @Request()
   @AppVerify(schema.createBook) // Verify
   async createBook(ctx: Context) {
     // After passing, it will enter the controller
@@ -248,8 +253,8 @@ ApiDescription(des: string)
 Describe the request and render it into the final document
 ```typescript
 class MyController extends FireCatController {
-   @ApiDescription('This is a request')
-   @Post('hello')
+  @Post('hello')
+  @ApiDescription('This is a request')
    hello(ctx: Context) {
      ctx.body = "hello world"
    }

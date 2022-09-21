@@ -47,30 +47,10 @@ class MyController extends FireCatController {
 }
 ```
 ### 装饰器
-#### Request
-```typescript
-Request()
-```
-Request装饰器会合并处理用户请求参数，这样你就不用区分`get`和`post`请求的差异
-```typescript
-class MyController extends FireCatController {
-  @Request()
-  @Get('hello')
-  hello(ctx: Context) {
-    // 能够拿到参数
-    console.log(ctx.request.body)
-    ctx.body = "hello world"
-  }
-  
-  @Request()
-  @Post('hello2')
-  hello2(ctx: Context) {
-    // 也能够拿到参数
-    console.log(ctx.request.body)
-    ctx.body = "hello world"
-  }
-}
-```
+
+### 请求装饰器
+fire-cat 内置了 `Get`, `Post`, `Del` 等请求装饰器，这些请求装饰器必须写在装饰器的最顶层。
+
 #### Get
 ```text
 Get(path: string)
@@ -97,6 +77,32 @@ class MyController extends FireCatController {
   }
 }
 ```
+
+#### Request
+```typescript
+Request()
+```
+Request装饰器会合并处理用户请求参数，这样你就不用区分`get`和`post`请求的差异
+```typescript
+class MyController extends FireCatController {
+  @Get('hello')
+  @Request()
+  hello(ctx: Context) {
+    // 能够拿到参数
+    console.log(ctx.request.body)
+    ctx.body = "hello world"
+  }
+
+  @Post('hello2')
+  @Request()
+  hello2(ctx: Context) {
+    // 也能够拿到参数
+    console.log(ctx.request.body)
+    ctx.body = "hello world"
+  }
+}
+```
+
 ### 路由
 路由控制
 ```typescript
@@ -183,8 +189,8 @@ export default {
 import {Post, Request} from "fire-cat";
 
 export default class BookController extends FireCatController {
-  @Request()
   @Post('create')
+  @Request()
   @AppVerify(schema.createBook) // 验证
   async createBook(ctx: Context) {
     // 通过后才会进入到控制器里面

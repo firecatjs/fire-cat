@@ -57,7 +57,9 @@ export function All(path: string) {
 export function Request() {
   return FireCatDecorator.registerInterceptor((ctx, next)=> {
     if (ctx.method == 'GET') {
-      ctx.request.body = ctx.request.query
+      ctx.request.body = {
+        ...ctx.request.query
+      }
     }
     next()
   }, InterceptorType.WRAP)

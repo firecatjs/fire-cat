@@ -5,15 +5,15 @@ import {FireCatVerify} from "../../src";
 
 export default class TestController extends FireCatController {
 
-  @Request()
   @Get('news')
+  @Request()
   @ApiDescription('新闻页面')
   async hello2 (ctx: Context) {
     ctx.body = 'news list'
   }
 
-  @Request()
   @Get('show')
+  @Request()
   @ApiDescription('验证展示页面')
   @FireCatVerify(schema.show)
   async show (ctx: Context) {
