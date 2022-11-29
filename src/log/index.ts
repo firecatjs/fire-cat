@@ -42,14 +42,10 @@ export class FireCatLog {
     }
   }
 
-  constructor(props: Configuration);
-  constructor(props: FireCatLogConfig);
-
   constructor(props: Configuration) {
     log4js.configure(props)
     this.log = log4js.getLogger();
   }
-
 
   action() {
     return this.loggerAction.bind(this)
