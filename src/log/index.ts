@@ -1,17 +1,18 @@
 import * as log4js from 'log4js'
 import {Context} from "../types";
+import {Configuration} from "log4js";
 
 interface FireCatLogConfig {
   filename?: string;
+  pm2?: boolean;
 }
 
 export class FireCatLog {
   public log: log4js.Logger;
 
-  constructor(props: FireCatLogConfig) {
-    // @ts-ignore
-    log4js.configure({
-      replaceConsole: true,
+  static defaultConfig(props: FireCatLogConfig): Configuration {
+    return {
+      pm2: props.pm2,
       appenders: {
         cheese: {
           // 设置类型为 dateFile
@@ -38,10 +39,17 @@ export class FireCatLog {
         // 设置默认的 categories
         default: {appenders: ['cheese'], level: 'debug'},
       }
-    })
+    }
+  }
 
+  constructor(props: Configuration);
+  constructor(props: FireCatLogConfig);
+
+  constructor(props: Configuration) {
+    log4js.configure(props)
     this.log = log4js.getLogger();
   }
+
 
   action() {
     return this.loggerAction.bind(this)
