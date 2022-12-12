@@ -16,7 +16,7 @@ koa-based upper frame encapsulation
 
 ## FireCat
 
-`controller`
+`Controller`
 ```typescript
 import {ApiDescription, FireCatController, Get, Request} from "fire-cat";
 import {Context} from "fire-cat/lib/types";
@@ -39,8 +39,19 @@ export class HomeController extends FireCatController {
 
 }
 ```
+`Router`
+```typescript
+import {FireCatRouter} from "fire-cat";
+import {HomeController} from "@/controller/home";
 
-`entry`
+const fireRouter = new FireCatRouter()
+
+fireRouter.controller('', new HomeController())
+
+export default fireRouter
+```
+
+`Entry`
 ```typescript
 import {FireCat} from "fire-cat";
 import {fireCatRouter} from "./router";
