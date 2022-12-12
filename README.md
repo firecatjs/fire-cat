@@ -15,6 +15,32 @@ koa-based upper frame encapsulation
 [中文文档](https://jon-millent.github.io/fire-cat/#/)
 
 ## FireCat
+
+`controller`
+```typescript
+import {ApiDescription, FireCatController, Get, Request} from "fire-cat";
+import {Context} from "fire-cat/lib/types";
+
+export class HomeController extends FireCatController {
+
+  @Get('')
+  @Request()
+  @ApiDescription('index page')
+  index(ctx: Context) {
+    ctx.body = 'hello world'
+  }
+
+  @Get('ping')
+  @Request()
+  @ApiDescription('ping page')
+  ping(ctx: Context) {
+    ctx.body = 'pang'
+  }
+
+}
+```
+
+`entry`
 ```typescript
 import {FireCat} from "fire-cat";
 import {fireCatRouter} from "./router";
@@ -27,3 +53,4 @@ app.koa.listen('3010');
 console.log(
   `🐳️app is running at http://127.0.0.1:3010`,
 );
+```
