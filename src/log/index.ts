@@ -59,10 +59,6 @@ export class FireCatLog {
       ip: ctx.ip,
       queryString: ctx.querystring,
       body: ctx.body,
-      headers: {
-        host: ctx.headers.host,
-        'user-agent': ctx.headers["user-agent"],
-      },
     });
   }
 
@@ -74,10 +70,6 @@ export class FireCatLog {
       // query: ctx.query,
       queryString: ctx.querystring,
       body: ctx.body,
-      headers: {
-        host: ctx.headers.host,
-        // 'user-agent': ctx.headers["user-agent"],
-      },
       error
     });
   }
