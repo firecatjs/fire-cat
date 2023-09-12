@@ -3,6 +3,7 @@ import FireRouterGroup from "../router/group";
 import {FireCatController} from "../controller";
 import {FireDocument} from "../document";
 import {FireDocumentHeadInterFace} from "../types";
+import {isStartRouter} from "../utils/common";
 
 export class FireCatRouter {
   public router: Router;
@@ -25,6 +26,6 @@ export class FireCatRouter {
   }
 
   controller(path: string, control: FireCatController) {
-    control.decoratorBindRouter(this.router, path, control)
+    control.decoratorBindRouter(this.router, isStartRouter(path) ? '' : path, control)
   }
 }

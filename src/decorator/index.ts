@@ -87,8 +87,14 @@ export class DecoratorControllerStore {
     return this.routerArray
   }
   public appendRouter(decorator, path: string, method: string, propertyKey: string) {
+
+    let betterPath = path
+    if (!/^\//.test(betterPath)) {
+      betterPath = '/' + betterPath
+    }
+
     this.routerArray.push({
-      path: path ? ('/' + path) : path,
+      path: betterPath,
       controller: decorator.value,
       method,
       propertyKey

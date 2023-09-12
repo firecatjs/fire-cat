@@ -3,21 +3,21 @@ import {Context} from "../../src/types";
 
 export default class HomeController extends FireCatController {
 
-  @Get('')
+  @Get('/')
   @Request()
   @ApiDescription('首页')
   async index (ctx: Context) {
     ctx.body = 'hello world'
   }
 
-  @Get('find')
+  @Get('/find')
   @Request()
   @ApiDescription('查找页面')
   async hello (ctx: Context) {
     ctx.body = 'find world'
   }
 
-  @Get('error')
+  @Get('/error')
   @Request()
   @ApiDescription('报错页面')
   async error (ctx: Context) {
@@ -26,7 +26,7 @@ export default class HomeController extends FireCatController {
     ctx.body = 'hello world'
   }
 
-  @Get('about')
+  @Get('/about')
   @Request()
   @ApiDescription('关于页面')
   async about (ctx: Context) {

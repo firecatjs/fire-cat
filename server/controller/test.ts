@@ -5,6 +5,13 @@ import {FireCatVerify} from "../../src";
 
 export default class TestController extends FireCatController {
 
+  @Get('/')
+  @Request()
+  @ApiDescription('entry')
+  async hello3 (ctx: Context) {
+    ctx.body = 'welcome'
+  }
+
   @Get('news')
   @Request()
   @ApiDescription('新闻页面')
@@ -12,7 +19,7 @@ export default class TestController extends FireCatController {
     ctx.body = 'news list'
   }
 
-  @Get('show')
+  @Get('/show')
   @Request()
   @ApiDescription('验证展示页面')
   @FireCatVerify(schema.show)
