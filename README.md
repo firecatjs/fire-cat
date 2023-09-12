@@ -23,14 +23,14 @@ import {Context} from "fire-cat/lib/types";
 
 export class HomeController extends FireCatController {
 
-  @Get('')
+  @Get('/')
   @Request()
   @ApiDescription('index page')
   index(ctx: Context) {
     ctx.body = 'hello world'
   }
 
-  @Get('ping')
+  @Get('/ping')
   @Request()
   @ApiDescription('ping page')
   ping(ctx: Context) {
@@ -46,7 +46,7 @@ import {HomeController} from "@/controller/home";
 
 const fireRouter = new FireCatRouter()
 
-fireRouter.controller('', new HomeController())
+fireRouter.controller('/', new HomeController())
 
 export default fireRouter
 ```
