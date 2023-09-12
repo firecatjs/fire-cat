@@ -3,11 +3,10 @@ import {fireCatRouter} from "./router";
 
 const app = new FireCat();
 
-const log = new FireCatLog({
-  filename: process.cwd() + '/logs/app.log'
-});
-
-app.koa.use(log.action())
+export const catLog = new FireCatLog(FireCatLog.defaultConfig({
+  filename: process.cwd() + '/logs/app.log',
+  pm2: true
+}));
 
 // start document service
 fireCatRouter.enableDocument('/document', {
@@ -21,7 +20,7 @@ app.koa.use(fireCatRouter.router.routes());
 
 app.onError = (ctx, err) => {
   console.log(err)
-  log.logError(ctx, err)
+  catLog.logError(ctx, err)
   ctx.body = {
     success: false,
     code: 500

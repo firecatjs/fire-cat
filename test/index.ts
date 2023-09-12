@@ -1,6 +1,6 @@
 import 'ts-jest'
 const baseUrl = 'http://127.0.0.1:3010'
-import qs from 'qs'
+import * as qs from 'qs'
 import axios from 'axios'
 
 async function getData(api: string, data: any = {}) {

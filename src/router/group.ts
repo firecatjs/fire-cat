@@ -1,5 +1,6 @@
 import * as Router from 'koa-router';
 import {FireCatController} from "../controller";
+import {isStartRouter} from "../utils/common";
 
 export default class FireRouterGroup {
 	public router: Router
@@ -7,7 +8,7 @@ export default class FireRouterGroup {
 
 	constructor(router: Router, path: string) {
 		this.router = router
-		this.path = path
+		this.path = isStartRouter(path) ? '' : path
 	}
 
 	concat(path: string, action: Router.IMiddleware<any, any>, methods: string) {

@@ -5,3 +5,8 @@ export default class FireCat {
     constructor();
     onError(ctx: Context, err: Error): void;
 }
+declare module 'koa' {
+    interface Request {
+        body: any;
+    }
+}
