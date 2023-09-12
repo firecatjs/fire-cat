@@ -22,3 +22,9 @@ export default class FireCat {
         console.log(err)
     }
 }
+
+declare module 'koa' {
+    interface Request {
+        body: any;
+    }
+}
