@@ -140,8 +140,7 @@ fireCatRouter.group('/book', (book) => {
 `fire-cat` provides a basic authentication solution
 First of all, you have to inherit the controller and implement the processing after the verification fails.
 ```typescript
-import {FireCatVerifyWrap} from "fire-cat";
-import {Context} from "fire-cat/lib/types";
+import {FireCatVerifyWrap, Context} from "fire-cat";
 
 class AppVerifyController extends FireCatController {
   async wrap(ctx: Context, message: string) {

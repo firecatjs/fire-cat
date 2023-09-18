@@ -141,8 +141,7 @@ fireCatRouter.group('/book', (book) => {
 `fire-cat`提供了基本的验证的解决方案
 首先你要继承控制器，实现对验证失败后的处理
 ```typescript
-import {FireCatVerifyWrap} from "fire-cat";
-import {Context} from "fire-cat/lib/types";
+import {FireCatVerifyWrap, Context} from "fire-cat";
 
 class AppVerifyController extends FireCatController {
   async wrap(ctx: Context, message: string) {

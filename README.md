@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="logo" src="https://cdn.jsdelivr.net/npm/fire-cat@2.0.2/logo-new.png" width="220" max-width="100%">
+  <img alt="logo" src="https://cdn.jsdelivr.net/npm/fire-cat@2.0.9/logo-new.png" width="220" max-width="100%">
 </p>
 
 <h1 align="center">
@@ -18,8 +18,7 @@ koa-based upper frame encapsulation
 
 `Controller`
 ```typescript
-import {ApiDescription, FireCatController, Get, Request} from "fire-cat";
-import {Context} from "fire-cat/lib/types";
+import {ApiDescription, FireCatController, Get, Request, Context} from "fire-cat";
 
 export class HomeController extends FireCatController {
 
