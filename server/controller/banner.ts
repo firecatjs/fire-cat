@@ -1,7 +1,4 @@
-import {ApiDescription, FireCatController, Get, Request} from "../../src";
-import {Context} from "../../src/types";
-import schema from './test.schema'
-import {FireCatVerify} from "../../src";
+import {ApiDescription, FireCatController, Get, Request, Context} from "../../src";
 
 export default class BannerController extends FireCatController {
 

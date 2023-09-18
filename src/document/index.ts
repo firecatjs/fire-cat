@@ -2,6 +2,7 @@
 import {FireDocumentHeadInterFace, FireDocumentInterFace, FireDocumentStoreInterFace, InterceptorType} from "../types";
 import {DecoratorControllerStore, getDecoratorStoreMetaData} from "../decorator";
 import {FireCatRouter} from "../router/router";
+import {fixedEndPath} from "../utils/common";
 
 export class FireDocument {
   static documents: FireDocumentStoreInterFace[] = [];
@@ -39,6 +40,8 @@ export class FireDocument {
 
           if (!mission.path) {
             mission.path = '/'
+          } else {
+            mission.path = fixedEndPath(mission.path)
           }
 
           const methodStore = getDecoratorStoreMetaData(item.target, item2.propertyKey)

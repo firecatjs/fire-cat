@@ -1,7 +1,5 @@
-import {ApiDescription, FireCatController, Get, Request} from "../../src";
-import {Context} from "../../src/types";
+import {ApiDescription, FireCatController, Get, Request, Context, FireCatVerify} from "../../src";
 import schema from './test.schema'
-import {FireCatVerify} from "../../src";
 
 export default class TestController extends FireCatController {
 

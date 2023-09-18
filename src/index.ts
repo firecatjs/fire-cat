@@ -8,7 +8,7 @@ import {Get, Post, Del, Head, Put, Update, Request} from "./decorators/request"
 import {createSchema} from './decorators/verify/fastValidator'
 import {FireDocument} from "./document";
 import {ApiDescription} from './decorators/doc'
-
+export * from './types'
 export {
   FireCat,
   FireCatController,

@@ -1,7 +1,6 @@
 import * as Validator from "fastest-validator";
 import * as Koa from "koa";
 import {DecoratorControllerStore} from "../decorator";
-import {ApiDescription} from "../decorators/doc";
 
 export interface FireValidatorErrorType {
   message: string;

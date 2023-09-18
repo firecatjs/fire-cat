@@ -2,6 +2,7 @@ import * as Router from 'koa-router';
 import {getDecoratorStoreMetaControllerData} from "../decorator";
 import 'reflect-metadata'
 import {FireDocument} from "../document";
+import {fixedEndPath} from "../utils/common";
 
 export class FireCatController {
 
@@ -15,7 +16,11 @@ export class FireCatController {
         const list = store.getRouterArray()
         const docDesList = store.getDocDesArray()
         list.forEach(item => {
-          router[item.method](subPath + item.path, item.controller.bind(context))
+
+          const concatPath = subPath + item.path
+
+          // replace end "/" of path
+          router[item.method](fixedEndPath(concatPath), item.controller.bind(context))
 
           docDesList.forEach(docItem => {
             if (docItem.propertyKey == item.propertyKey) {
