@@ -23,8 +23,10 @@ koa-based upper frame encapsulation
 [中文文档](https://jon-millent.github.io/fire-cat/#/)
 
 ## Features
-* Support package deployment
-* Simple and easy to use
+* Use decorators
+* Custom interceptor
+* Simple to use
+* Pleasant development experience
 
 ## Installation
 Using npm:
