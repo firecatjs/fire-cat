@@ -12,9 +12,10 @@ Fire Cat
 
 koa-based upper frame encapsulation
 
+
 ![version](https://img.shields.io/npm/v/fire-cat)
 ![license](https://img.shields.io/github/license/jon-millent/fire-cat)
-![npm](https://img.shields.io/npm/dm/fire-cat)
+![npm](https://img.shields.io/npm/v/fire-cat)
 
 </div>
 
