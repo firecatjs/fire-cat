@@ -15,6 +15,7 @@ koa-based upper frame encapsulation
 
 ![npm](https://img.shields.io/npm/v/fire-cat)
 ![GitHub](https://img.shields.io/github/license/jon-millent/fire-cat)
+![Build](https://img.shields.io/github/actions/workflow/status/jon-millent/fire-cat/webpack.yml)
 ![npm](https://img.shields.io/npm/dm/fire-cat)
 
 
