@@ -1,12 +1,12 @@
 import * as Koa from 'koa';
-import {Context} from "../types";
+import {Context, FireCatFace} from "../types";
 import * as bodyParser from 'koa-bodyparser';
 
 export default class FireCat {
     public koa: Koa;
 
-    constructor() {
-        this.koa = new Koa();
+    constructor(config: FireCatFace = {}) {
+        this.koa = new Koa(config.koaConfig);
         this.koa.use(bodyParser());
         this.koa.use(async (ctx, next) => {
             try {
@@ -20,11 +20,5 @@ export default class FireCat {
 
     onError(ctx: Context, err: Error) {
         console.log(err)
-    }
-}
-
-declare module 'koa' {
-    interface Request {
-        body: any;
     }
 }

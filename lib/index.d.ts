@@ -10,3 +10,9 @@ import { FireDocument } from "./document";
 import { ApiDescription } from './decorators/doc';
 export * from './types';
 export { FireCat, FireCatController, FireCatRouter, FireCatLog, FireCatDecorator, FireDocument, FireCatVerify, Get, Post, Del, Head, Put, Update, Request, ApiDescription, FireCatVerifyWrap, createSchema, };
+declare module "koa" {
+    interface Request {
+        body: any;
+        rawBody: string;
+    }
+}

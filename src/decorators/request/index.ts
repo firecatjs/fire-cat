@@ -60,6 +60,8 @@ export function Request() {
       ctx.request.body = {
         ...ctx.request.query
       }
+    } else {
+      ctx.request.body = ctx.request.body || {}
     }
     next()
   }, InterceptorType.WRAP)

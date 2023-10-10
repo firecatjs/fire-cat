@@ -1,6 +1,6 @@
 {
   "name": "fire-cat",
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "koa-based upper framework",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
