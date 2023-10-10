@@ -1,12 +1,7 @@
 import * as Koa from 'koa';
-import { Context } from "../types";
+import { Context, FireCatFace } from "../types";
 export default class FireCat {
     koa: Koa;
-    constructor();
+    constructor(config?: FireCatFace);
     onError(ctx: Context, err: Error): void;
-}
-declare module 'koa' {
-    interface Request {
-        body: any;
-    }
 }

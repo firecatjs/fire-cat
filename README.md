@@ -3,7 +3,6 @@
   
 ![logo](https://github.com/Jon-Millent/fire-cat/assets/17584565/8fd3a5b1-edae-48fb-ad68-c839a9e8fa59)
 
-
   
 </p>
 
@@ -13,11 +12,10 @@ Fire Cat
 
 koa-based upper frame encapsulation
 
-![npm](https://img.shields.io/npm/v/fire-cat)
-![GitHub](https://img.shields.io/github/license/jon-millent/fire-cat)
-![Build](https://img.shields.io/github/actions/workflow/status/jon-millent/fire-cat/webpack.yml)
-![npm](https://img.shields.io/npm/dm/fire-cat)
 
+![version](https://img.shields.io/npm/v/fire-cat)
+![license](https://img.shields.io/github/license/jon-millent/fire-cat)
+![npm](https://img.shields.io/npm/v/fire-cat)
 
 </div>
 

@@ -1,6 +1,7 @@
 import * as Validator from "fastest-validator";
 import * as Koa from "koa";
 import {DecoratorControllerStore} from "../decorator";
+import * as bodyParser from 'koa-bodyparser';
 
 export interface FireValidatorErrorType {
   message: string;
@@ -65,4 +66,19 @@ export interface FireDocumentBodyInterFace {
   methods: string;
   rule: any[];
   description?: string;
+}
+
+
+export interface FireCatKoaFace {
+  env?: string | undefined,
+  keys?: string[] | undefined,
+  proxy?: boolean | undefined,
+  subdomainOffset?: number | undefined,
+  proxyIpHeader?: string | undefined,
+  maxIpsCount?: number | undefined
+}
+
+export interface FireCatFace {
+  bodyParserConfig?: bodyParser.Options;
+  koaConfig?: FireCatKoaFace
 }
