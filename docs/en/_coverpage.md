@@ -10,7 +10,7 @@
 - Replacing middleware with decorators
 - Use webpack to package and deploy
 
-[GitHub](https://github.com/Jon-Millent/fire-cat)
+[GitHub](https://github.com/firecatjs/fire-cat-started.git)
 [Get Started](#start)
 
 ![color](#f0f0f0)

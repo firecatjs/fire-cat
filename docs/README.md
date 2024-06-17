@@ -3,7 +3,7 @@
 
 推荐使用`fire-cat`模板项目
 ```git
-git clone https://github.com/Jon-Millent/fire-cat-started.git
+git clone https://github.com/firecatjs/fire-cat-started.git
 ```
 
 或者自己安装到现有项目里

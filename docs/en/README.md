@@ -3,7 +3,7 @@
 
 The `fire-cat` template project is recommended
 ```git
-git clone https://github.com/Jon-Millent/fire-cat-started.git
+git clone https://github.com/firecatjs/fire-cat-started.git
 ````
 
 Or install it yourself into an existing project

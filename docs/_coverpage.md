@@ -10,7 +10,7 @@
 - 基于装饰器来替代中间件
 - 使用webpack打包部署
 
-[GitHub](https://github.com/Jon-Millent/fire-cat)
+[GitHub](https://github.com/firecatjs/fire-cat-started.git)
 [Get Started](#开始)
 
 <!-- 背景色 -->
