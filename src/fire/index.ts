@@ -13,6 +13,7 @@ export default class FireCat {
                 await next();
             } catch (err) {
                 ctx.status = 500;
+                ctx.app.emit('error', err, ctx);
                 this.onError(ctx, err)
             }
         })

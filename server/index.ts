@@ -18,14 +18,15 @@ fireCatRouter.enableDocument('/document', {
 
 app.koa.use(fireCatRouter.router.routes());
 
-app.onError = (ctx, err) => {
+app.koa.on('error', (err, ctx) => {
+  // 可以在这里添加额外的错误处理逻辑，例如记录日志
   console.log(err)
   catLog.logError(ctx, err)
   ctx.body = {
     success: false,
     code: 500
   }
-}
+});
 
 app.koa.listen('3010');
 

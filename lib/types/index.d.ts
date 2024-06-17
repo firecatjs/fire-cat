@@ -1,6 +1,6 @@
 import * as Validator from "fastest-validator";
 import * as Koa from "koa";
-import { DecoratorControllerStore } from "../decorator";
+import { DecoratorRepository } from "../decorator";
 import * as bodyParser from 'koa-bodyparser';
 export interface FireValidatorErrorType {
     message: string;
@@ -37,7 +37,7 @@ export interface CreateSchemaInterFace {
 }
 export interface FireDocumentStoreInterFace {
     path: string;
-    context: DecoratorControllerStore;
+    context: DecoratorRepository;
     target: any;
 }
 export interface FireDocumentHeadInterFace {

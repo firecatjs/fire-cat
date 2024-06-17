@@ -48,7 +48,7 @@ class MyController extends FireCatController {
 ````
 ### Decorators
 ### request decorator
-fire-cat has built-in `Get`, `Post`, `Del` and other request decorators, these request decorators must be written at the top level of the decorator.
+fire-cat has built-in request decorators such as `Get`, `Post`, `Del`, etc. These request decorators are recommended to be written at the top level of the decorator.
 
 #### Get
 ````text
@@ -204,17 +204,18 @@ Many times, we use the koa middleware to implement the function of the intercept
 import {FireCatDecorator} from "fire-cat";
 
 export const AuthLogin = function () {
-  return FireCatDecorator.registerImplement((ctx, next) => {
+  return FireCatDecorator.registerImplement(async (ctx, next) => {
     ctx.state.userInfo = {
       id: 1,
       name: 'fake',
       some: 'bar'
     }
-    next()
+    await next()
   })
 }
 ````
-Then you can use this interceptor inside the controller
+Then you can use this interceptor inside the controller  
+Note⚠️: Be sure to await next() in the async method
 ```typescript
 class MyController extends FireCatController {
   @Post('hello')

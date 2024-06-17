@@ -1,11 +1,11 @@
-import {FireCatDecorator, getDecoratorStoreMetaControllerData} from '../../decorator'
+import {FireCatDecorator, getDecoratorRepositoryController} from '../../decorator'
 import {InterceptorType} from "../../types";
 
 function registerRouterPut(target, propertyKey, decorator, path: string, method: string) {
   try {
-    const store = getDecoratorStoreMetaControllerData(target)
+    const store = getDecoratorRepositoryController(target)
     if (store) {
-      store.appendRouter(decorator, path, method, propertyKey)
+      store.addRoute(decorator, path, method, propertyKey)
     }
   } catch (e) {
     //
@@ -55,7 +55,7 @@ export function All(path: string) {
 }
 
 export function Request() {
-  return FireCatDecorator.registerInterceptor((ctx, next)=> {
+  return FireCatDecorator.registerInterceptor(async (ctx, next)=> {
     if (ctx.method == 'GET') {
       ctx.request.body = {
         ...ctx.request.query
@@ -63,6 +63,6 @@ export function Request() {
     } else {
       ctx.request.body = ctx.request.body || {}
     }
-    next()
+    await next()
   }, InterceptorType.WRAP)
 }

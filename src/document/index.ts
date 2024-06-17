@@ -1,13 +1,13 @@
 // 接口文档服务
 import {FireDocumentHeadInterFace, FireDocumentInterFace, FireDocumentStoreInterFace, InterceptorType} from "../types";
-import {DecoratorControllerStore, getDecoratorStoreMetaData} from "../decorator";
+import {DecoratorRepository} from "../decorator";
 import {FireCatRouter} from "../router/router";
 import {fixedEndPath} from "../utils/common";
 
 export class FireDocument {
   static documents: FireDocumentStoreInterFace[] = [];
 
-  static appendDocument(path: string, context: DecoratorControllerStore, target: any) {
+  static appendDocument(path: string, context: DecoratorRepository, target: any) {
     FireDocument.documents.push({
       path,
       target,
@@ -27,7 +27,7 @@ export class FireDocument {
       }
 
       FireDocument.documents.forEach(item => {
-        const children = item.context.getRouterArray()
+        const children = item.context.getRoutes()
 
         children.forEach(item2 => {
 
@@ -44,12 +44,10 @@ export class FireDocument {
             mission.path = fixedEndPath(mission.path)
           }
 
-          const methodStore = getDecoratorStoreMetaData(item.target, item2.propertyKey)
+          const methodStore = item.context.getMiddlewares(item2.propertyKey)
 
-          if (methodStore) {
-            const inter = methodStore.getInterceptor()
-
-            inter.forEach(intItem => {
+          if (Array.isArray(methodStore)) {
+            methodStore.forEach(intItem => {
               if (intItem.type == InterceptorType.RULE) {
                 mission.rule.push(intItem.data)
               }
