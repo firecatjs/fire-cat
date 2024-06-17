@@ -43,7 +43,7 @@ yarn add fire-cat
 
 ## Use project templates
 ```shell
-git clone https://github.com/Jon-Millent/fire-cat-started.git
+git clone https://github.com/firecatjs/fire-cat-started.git
 ```
 ```sheell
 cd fire-cat-started
