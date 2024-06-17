@@ -49,7 +49,7 @@ class MyController extends FireCatController {
 ### 装饰器
 
 ### 请求装饰器
-fire-cat 内置了 `Get`, `Post`, `Del` 等请求装饰器，这些请求装饰器必须写在装饰器的最顶层。
+fire-cat 内置了 `Get`, `Post`, `Del` 等请求装饰器，这些请求装饰器推荐写在装饰器的最顶层。
 
 #### Get
 ```text

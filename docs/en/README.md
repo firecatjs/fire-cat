@@ -48,7 +48,7 @@ class MyController extends FireCatController {
 ````
 ### Decorators
 ### request decorator
-fire-cat has built-in `Get`, `Post`, `Del` and other request decorators, these request decorators must be written at the top level of the decorator.
+fire-cat has built-in request decorators such as `Get`, `Post`, `Del`, etc. These request decorators are recommended to be written at the top level of the decorator.
 
 #### Get
 ````text
