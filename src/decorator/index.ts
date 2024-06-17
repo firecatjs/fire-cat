@@ -1,4 +1,4 @@
-import { FIRE_REPOSITORY_METADATA_KEY } from "src/config/fireKeys";
+import { FIRE_REPOSITORY_METADATA_KEY } from "../config/fireKeys";
 import {
   Context,
   DecoratorDocDesInterFace,
