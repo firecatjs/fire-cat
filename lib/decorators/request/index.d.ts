@@ -5,4 +5,4 @@ export declare function Head(path: string): (target: any, propertyKey: string, d
 export declare function Update(path: string): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;
 export declare function Put(path: string): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;
 export declare function All(path: string): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;
-export declare function Request(): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
+export declare function Request(): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;

@@ -1,10 +1,10 @@
-import {FireCatDecorator, getDecoratorStoreMetaControllerData} from "../../decorator";
+import {FireCatDecorator, getDecoratorRepositoryController} from "../../decorator";
 
 export function ApiDescription (des: string) {
   return FireCatDecorator.registerImplement((target, propertyKey)=> {
-    const store = getDecoratorStoreMetaControllerData(target)
+    const store = getDecoratorRepositoryController(target)
     if (store) {
-      store.appendDocDes({
+      store.addDocDeses({
         propertyKey,
         description: des
       })
