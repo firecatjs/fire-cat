@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jon-Millent/fire-cat.git"
+    "url": "git+https://github.com/firecatjs/fire-cat.git"
   },
   "author": "jon-millent",
   "license": "MIT",
