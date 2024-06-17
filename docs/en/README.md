@@ -204,17 +204,18 @@ Many times, we use the koa middleware to implement the function of the intercept
 import {FireCatDecorator} from "fire-cat";
 
 export const AuthLogin = function () {
-  return FireCatDecorator.registerImplement((ctx, next) => {
+  return FireCatDecorator.registerImplement(async (ctx, next) => {
     ctx.state.userInfo = {
       id: 1,
       name: 'fake',
       some: 'bar'
     }
-    next()
+    await next()
   })
 }
 ````
-Then you can use this interceptor inside the controller
+Then you can use this interceptor inside the controller  
+Note⚠️: Be sure to await next() in the async method
 ```typescript
 class MyController extends FireCatController {
   @Post('hello')

@@ -83,13 +83,13 @@ export class HomeController extends FireCatController {
 import {FireCatDecorator} from "fire-cat";
 
 export const AuthLogin = function () {
-  return FireCatDecorator.registerImplement((ctx, next) => {
+  return FireCatDecorator.registerImplement(async (ctx, next) => {
     ctx.state.userInfo = {
       id: 1,
       name: 'fake',
       some: 'bar'
     }
-    next()
+    await next()
   })
 }
 ```

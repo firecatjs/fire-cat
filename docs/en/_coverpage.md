@@ -2,7 +2,7 @@
 
 ![logo](https://cdn.jsdelivr.net/npm/fire-cat@2.0.2/logo-new.png ':size=200px')
 
-# FireCat <small>2.0.10</small>
+# FireCat <small>2.2.0</small>
 
 > Concise first koa upper framework
 

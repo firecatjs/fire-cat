@@ -56,17 +56,13 @@ export function All(path: string) {
 
 export function Request() {
   return FireCatDecorator.registerInterceptor(async (ctx, next)=> {
-    try {
-      if (ctx.method == 'GET') {
-        ctx.request.body = {
-          ...ctx.request.query
-        }
-      } else {
-        ctx.request.body = ctx.request.body || {}
+    if (ctx.method == 'GET') {
+      ctx.request.body = {
+        ...ctx.request.query
       }
-      await next()
-    } catch(err) {
-      throw err;
+    } else {
+      ctx.request.body = ctx.request.body || {}
     }
+    await next()
   }, InterceptorType.WRAP)
 }

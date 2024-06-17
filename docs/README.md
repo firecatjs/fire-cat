@@ -206,18 +206,19 @@ import {FireCatDecorator} from "fire-cat";
 
 // 验证登陆
 export const AuthLogin = function () {
-  return FireCatDecorator.registerImplement((ctx, next) => {
+  return FireCatDecorator.registerImplement(async (ctx, next) => {
     // 模拟解析出用户数据
     ctx.state.userInfo = {
       id: 1,
       name: 'fake',
       some: 'bar'
     }
-    next()
+    await next()
   })
 }
 ```
-然后你就可以在控制器里面使用这个拦截器了
+然后你就可以在控制器里面使用这个拦截器了  
+注意⚠️：一定要在async的方法里面 await next()
 ```typescript
 class MyController extends FireCatController {
   @Post('hello')
