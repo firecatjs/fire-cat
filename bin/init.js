@@ -5,7 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 const https = require('https');
-const rimraf = require('rimraf');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -35,6 +34,23 @@ function checkUrl(url) {
       resolve(false);
     });
   });
+}
+
+function deleteFolderRecursive(dirPath) {
+  if (fs.existsSync(dirPath)) {
+      fs.readdirSync(dirPath).forEach((file) => {
+          const curPath = path.join(dirPath, file);
+          if (fs.lstatSync(curPath).isDirectory()) {
+              // 递归删除子目录
+              deleteFolderRecursive(curPath);
+          } else {
+              // 删除文件
+              fs.unlinkSync(curPath);
+          }
+      });
+      // 删除空目录
+      fs.rmdirSync(dirPath);
+  }
 }
 
 async function main() {
@@ -72,7 +88,7 @@ async function main() {
   const projectPath = path.join(process.cwd(), projectName);
 
   // 删除 .git 文件夹
-  rimraf.sync(path.join(projectPath, '.git'));
+  deleteFolderRecursive(path.join(projectPath, '.git'));
 
   const packageJsonPath = path.join(projectPath, 'package.json');
 

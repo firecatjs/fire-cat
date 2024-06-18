@@ -1,6 +1,6 @@
 {
   "name": "fire-cat",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "koa-based upper framework",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -46,7 +46,6 @@
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "nodemon": "^3.1.0",
-    "rimraf": "^5.0.7",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
