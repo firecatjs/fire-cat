@@ -10,7 +10,7 @@
 Fire Cat
 </h1>
 
-koa-based upper frame encapsulation
+An elegant Node.js framework based on Koajs
 
 
 ![version](https://img.shields.io/npm/v/fire-cat)
@@ -21,9 +21,9 @@ koa-based upper frame encapsulation
 
 
 
-## Language
-[English Doc](https://jon-millent.github.io/fire-cat/#/en/)
-[中文文档](https://jon-millent.github.io/fire-cat/#/)
+## Document
+[English Doc](https://firecat.totoro.top) 
+[中文文档](https://firecat.totoro.top/zh/)
 
 ## Features
 * Use decorators
@@ -31,114 +31,20 @@ koa-based upper frame encapsulation
 * Simple to use
 * Pleasant development experience
 
-## Installation
+## Quickstart
 Using npm:
 ```shell
-npm i fire-cat
-```
-Using yarn:
-```shell
-yarn add fire-cat
+npx fire-cat init
 ```
 
-## Use project templates
 ```shell
-git clone https://github.com/firecatjs/fire-cat-started.git
-```
-```sheell
-cd fire-cat-started
-```
+cd your-project-name
 
-```sheell
 yarn
+# or
+npm install
 ```
-
-## Usage
-
-#### Create controller
-`controller.ts`
-```typescript
-import {ApiDescription, FireCatController, Get, Request, Context} from "fire-cat";
-
-export class HomeController extends FireCatController {
-
-  @Get('/')
-  @Request()
-  @ApiDescription('index page')
-  index(ctx: Context) {
-    ctx.body = 'hello world'
-  }
-
-  @Get('/ping')
-  @Request()
-  @ApiDescription('ping page')
-  ping(ctx: Context) {
-    ctx.body = 'pang'
-  }
-
-}
-```
-#### Custom interceptor
-```typescript
-import {FireCatDecorator} from "fire-cat";
-
-export const AuthLogin = function () {
-  return FireCatDecorator.registerImplement(async (ctx, next) => {
-    ctx.state.userInfo = {
-      id: 1,
-      name: 'fake',
-      some: 'bar'
-    }
-    await next()
-  })
-}
-```
-
-#### Use interceptors
-```typescript
-class MyController extends FireCatController {
-  @Post('hello')
-  @AuthLogin()
-  hello(ctx: Context) {
-    console.log(ctx.state.userInfo)
-    ctx.body = "hello world"
-  }
-}
-```
-
-#### Bind route
-`router.ts`
-```typescript
-import {FireCatRouter} from "fire-cat";
-import {HomeController} from "controller.ts";
-
-const fireRouter = new FireCatRouter()
-
-fireRouter.controller('/', new HomeController())
-
-export default fireRouter
-```
-
-#### Start your application
-`app.ts`
-```typescript
-import {FireCat} from "fire-cat";
-import {fireCatRouter} from "router.ts";
-
-const app = new FireCat();
-
-app.koa.use(fireCatRouter.router.routes());
-app.koa.listen('3010');
-
-console.log(
-  `🐳️app is running at http://127.0.0.1:3010`,
-);
-```
-
-## Document
-[English Doc](https://jon-millent.github.io/fire-cat/#/en/)
-[中文文档](https://jon-millent.github.io/fire-cat/#/)
-
+Please follow the documentation at [firecat document](https://firecat.totoro.top/)
 
 ## license
 ### [MIT](https://github.com/Jon-Millent/fire-cat/blob/main/LICENSE)
