@@ -26,13 +26,19 @@ An elegant Node.js framework based on Koajs
 [中文文档](https://firecat.totoro.top/zh/)
 
 ## Features
-* Use decorators
-* Custom interceptor
-* Simple to use
-* Pleasant development experience
+* Develop hot updates
+* Implement various functions based on decorators
+* Interceptors (middleware) based on decorators
+* Field validation
+* Logs
+* Document services
+* Webpack packaging
+* Custom interceptors
+* Group routing
+* Configuration files that support various environments
 
 ## Quickstart
-Using npm:
+
 ```shell
 npx fire-cat init
 ```
