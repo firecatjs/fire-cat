@@ -53,4 +53,4 @@ npm install
 Please follow the documentation at [firecat document](https://firecat.totoro.top/)
 
 ## license
-### [MIT](https://github.com/Jon-Millent/fire-cat/blob/main/LICENSE)
+[MIT](https://github.com/Jon-Millent/fire-cat/blob/main/LICENSE)
