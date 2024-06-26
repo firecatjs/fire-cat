@@ -1,7 +1,7 @@
 <div align="center">
 <p align="center">
   
-![logo](https://github.com/Jon-Millent/fire-cat/assets/17584565/8fd3a5b1-edae-48fb-ad68-c839a9e8fa59)
+<img src="https://raw.githubusercontent.com/firecatjs/fire-cat/main/logo-new.png" width="240">
 
   
 </p>
