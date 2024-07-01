@@ -18,7 +18,7 @@ export class DecoratorRepository {
   private interceptors: InterceptorArrayInterface[] = [];
 
   addInterceptor(interceptor: any) {
-    this.interceptors.push(interceptor);
+    this.interceptors.unshift(interceptor);
   }
 
   addRoute(decorator, path: string, method: string, propertyKey: string) {
@@ -40,7 +40,7 @@ export class DecoratorRepository {
     if (!this.middlewares[propertyKey]) {
       this.middlewares[propertyKey] = [];
     }
-    this.middlewares[propertyKey].push(middleware);
+    this.middlewares[propertyKey].unshift(middleware);
   }
 
   public addDocDeses(doc: DecoratorDocDesInterFace) {

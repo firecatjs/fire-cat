@@ -42,4 +42,10 @@ describe("api test",   () => {
     expect(result).toBe('your name is 长安')
   })
 
+  it('test.hello.world', async () => {
+    const result = await getData('/test/hello')
+    expect(result).toBe('world')
+  })
+
+
 })
