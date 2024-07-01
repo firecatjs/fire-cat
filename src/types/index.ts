@@ -85,6 +85,8 @@ export interface FireCatFace {
   koaConfig?: FireCatKoaFace
 }
 
+// from @types/koa-bodyparser v4.3.12
+
 export declare function bodyParser(opts?: bodyParser.Options): Koa.Middleware;
 
 export interface BodyParserOptions {
