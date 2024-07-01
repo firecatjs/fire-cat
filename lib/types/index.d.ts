@@ -6,6 +6,7 @@ export interface FireValidatorErrorType {
     message: string;
     details: Validator.ValidationError[];
 }
+export type KoaMiddleware = (ctx: Context, next: Koa.Next) => Promise<void>;
 export interface SyncCheckFunction extends Validator.SyncCheckFunction {
 }
 export interface Context extends Koa.Context {
@@ -68,6 +69,23 @@ export interface FireCatKoaFace {
     maxIpsCount?: number | undefined;
 }
 export interface FireCatFace {
-    bodyParserConfig?: bodyParser.Options;
+    bodyParserConfig?: BodyParserOptions;
     koaConfig?: FireCatKoaFace;
+}
+export declare function bodyParser(opts?: bodyParser.Options): Koa.Middleware;
+export interface BodyParserOptions {
+    enableTypes?: string[] | undefined;
+    encoding?: string | undefined;
+    formLimit?: string | undefined;
+    jsonLimit?: string | undefined;
+    textLimit?: string | undefined;
+    xmlLimit?: string | undefined;
+    strict?: boolean | undefined;
+    detectJSON?: ((ctx: Koa.Context) => boolean) | undefined;
+    extendTypes?: {
+        json?: string[] | string | undefined;
+        form?: string[] | string | undefined;
+        text?: string[] | string | undefined;
+    } | undefined;
+    onerror?: ((err: Error, ctx: Koa.Context) => void) | undefined;
 }

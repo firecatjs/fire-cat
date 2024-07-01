@@ -1,5 +1,6 @@
 import * as Router from 'koa-router';
 import { FireCatController } from "../controller";
+import { KoaMiddleware } from '../../src/types';
 export default class FireRouterGroup {
     router: Router;
     path: string;
@@ -13,6 +14,6 @@ export default class FireRouterGroup {
     update(path: string, action: Router.IMiddleware<any, any>): any;
     head(path: string, action: Router.IMiddleware<any, any>): any;
     all(path: string, action: Router.IMiddleware<any, any>): any;
-    controller(path: string, control: FireCatController): void;
+    controller(path: string, control: FireCatController, middlewares?: KoaMiddleware[]): void;
     group(path: string, callback: (router: FireRouterGroup) => void): void;
 }
