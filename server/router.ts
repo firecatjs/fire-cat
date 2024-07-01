@@ -6,11 +6,11 @@ import BannerController from "./controller/banner";
 export const fireCatRouter = new FireCatRouter()
 
 const testGlobalMiddleware: KoaMiddleware = async (ctx, next)=> {
-  console.log("cross global")
+  ctx.hello = "world"
   await next();
 }
 
-fireCatRouter.controller('/', new HomeController(), [testGlobalMiddleware])
+fireCatRouter.controller('/', new HomeController())
 
 fireCatRouter.group('/api/v1', (v1)=> {
   v1.group('/admin', (admin) => {
@@ -24,4 +24,4 @@ fireCatRouter.group('/api/v1', (v1)=> {
 //   })
 // })
 
-fireCatRouter.controller('/test', new TestController())
+fireCatRouter.controller('/test', new TestController(), [testGlobalMiddleware])

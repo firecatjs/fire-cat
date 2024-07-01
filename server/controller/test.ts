@@ -25,4 +25,11 @@ export default class TestController extends FireCatController {
     ctx.body = 'your name is ' + ctx.request.body.name
   }
 
+  @Get('/hello')
+  @Request()
+  @ApiDescription('hello 测试')
+  async hello (ctx: Context) {
+    ctx.body = ctx.hello
+  }
+
 }
