@@ -1,6 +1,7 @@
 import * as Router from 'koa-router';
 import {FireCatController} from "../controller";
 import {isStartRouter} from "../utils/common";
+import { KoaMiddleware } from '../../src/types';
 
 export default class FireRouterGroup {
 	public router: Router
@@ -54,8 +55,8 @@ export default class FireRouterGroup {
 		return this.concat(path, action, 'all')
 	}
 
-	controller(path: string, control: FireCatController) {
-		control.decoratorBindRouter(this.router, this.path + path.toString(), control)
+	controller(path: string, control: FireCatController, middlewares?: KoaMiddleware[]) {
+		control.decoratorBindRouter(this.router, this.path + path.toString(), control, middlewares)
 	}
 
 	group(path: string, callback: (router: FireRouterGroup)=> void) {

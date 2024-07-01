@@ -3,11 +3,12 @@ import {getDecoratorRepositoryController} from "../decorator";
 import 'reflect-metadata'
 import {FireDocument} from "../document";
 import {fixedEndPath} from "../utils/common";
+import { KoaMiddleware } from '../../src/types';
 
 export class FireCatController {
 
   // 绑定构造的router
-  public decoratorBindRouter(router: Router, subPath: string, context: any) {
+  public decoratorBindRouter(router: Router, subPath: string, context: any, middlewares: KoaMiddleware[] = []) {
 
     const store = getDecoratorRepositoryController(this)
 
@@ -25,7 +26,10 @@ export class FireCatController {
           // replace end "/" of path
           router[item.method](
             fixedEndPath(concatPath), 
-            ...ins.map(i => i.controller.bind(context)), 
+            ...[
+              ...middlewares,
+              ...ins.map(i => i.controller.bind(context))
+            ], 
             item.controller.bind(context)
           )
 

@@ -58,7 +58,7 @@ export function Request() {
   return FireCatDecorator.registerInterceptor(async (ctx, next)=> {
     if (ctx.method == 'GET') {
       ctx.request.body = {
-        ...ctx.request.query
+        ...(ctx.request.query || {})
       }
     } else {
       ctx.request.body = ctx.request.body || {}

@@ -8,9 +8,11 @@ export interface FireValidatorErrorType {
   details: Validator.ValidationError[]
 }
 
+export type KoaMiddleware = (ctx: Context, next: Koa.Next) => Promise<void>;
+
 export interface SyncCheckFunction extends Validator.SyncCheckFunction {}
 
-export interface Context extends Koa.Context {}
+export interface Context extends Koa.Context { }
 
 export enum InterceptorType {
   WRAP, // 普通拦截器
@@ -79,6 +81,65 @@ export interface FireCatKoaFace {
 }
 
 export interface FireCatFace {
-  bodyParserConfig?: bodyParser.Options;
+  bodyParserConfig?: BodyParserOptions;
   koaConfig?: FireCatKoaFace
+}
+
+export declare function bodyParser(opts?: bodyParser.Options): Koa.Middleware;
+
+export interface BodyParserOptions {
+  /**
+   *  parser will only parse when request type hits enableTypes, default is ['json', 'form'].
+   */
+  enableTypes?: string[] | undefined;
+
+  /**
+   * requested encoding. Default is utf-8 by co-body
+   */
+  encoding?: string | undefined;
+
+  /**
+   * limit of the urlencoded body. If the body ends up being larger than this limit
+   * a 413 error code is returned. Default is 56kb
+   */
+  formLimit?: string | undefined;
+
+  /**
+   * limit of the json body. Default is 1mb
+   */
+  jsonLimit?: string | undefined;
+
+  /**
+   * limit of the text body. Default is 1mb.
+   */
+  textLimit?: string | undefined;
+
+  /**
+   * limit of the xml body. Default is 1mb.
+   */
+  xmlLimit?: string | undefined;
+
+  /**
+   * when set to true, JSON parser will only accept arrays and objects. Default is true
+   */
+  strict?: boolean | undefined;
+
+  /**
+   * custom json request detect function. Default is null
+   */
+  detectJSON?: ((ctx: Koa.Context) => boolean) | undefined;
+
+  /**
+   * support extend types
+   */
+  extendTypes?: {
+      json?: string[] | string | undefined;
+      form?: string[] | string | undefined;
+      text?: string[] | string | undefined;
+  } | undefined;
+
+  /**
+   * support custom error handle
+   */
+  onerror?: ((err: Error, ctx: Koa.Context) => void) | undefined;
 }

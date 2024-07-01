@@ -1,6 +1,6 @@
 {
   "name": "fire-cat",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "koa-based upper framework",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -38,7 +38,6 @@
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.12",
     "@types/koa": "^2.15.0",
-    "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-router": "^7.4.8",
     "@types/node": "^20.11.29",
     "axios": "^1.6.8",

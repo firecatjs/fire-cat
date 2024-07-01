@@ -2,7 +2,7 @@ import * as Router from 'koa-router';
 import FireRouterGroup from "../router/group";
 import {FireCatController} from "../controller";
 import {FireDocument} from "../document";
-import {FireDocumentHeadInterFace} from "../types";
+import {FireDocumentHeadInterFace, KoaMiddleware} from "../types";
 import {isStartRouter} from "../utils/common";
 
 export class FireCatRouter {
@@ -25,7 +25,7 @@ export class FireCatRouter {
     callback(new FireRouterGroup(this.router, path))
   }
 
-  controller(path: string, control: FireCatController) {
-    control.decoratorBindRouter(this.router, isStartRouter(path) ? '' : path, control)
+  controller(path: string, control: FireCatController, middlewares?: KoaMiddleware[]) {
+    control.decoratorBindRouter(this.router, isStartRouter(path) ? '' : path, control, middlewares)
   }
 }

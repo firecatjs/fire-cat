@@ -7,7 +7,7 @@ export default class FireCat {
 
     constructor(config: FireCatFace = {}) {
         this.koa = new Koa(config.koaConfig);
-        this.koa.use(bodyParser());
+        this.koa.use(bodyParser(config.bodyParserConfig));
         this.koa.use(async (ctx, next) => {
             try {
                 await next();
@@ -20,6 +20,6 @@ export default class FireCat {
     }
 
     onError(ctx: Context, err: Error) {
-        console.log(err)
+        // console.log(err)
     }
 }
