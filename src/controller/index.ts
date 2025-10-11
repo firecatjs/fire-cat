@@ -1,9 +1,9 @@
-import * as Router from 'koa-router';
+import * as Router from '@koa/router';
 import {getDecoratorRepositoryController} from "../decorator";
 import 'reflect-metadata'
 import {FireDocument} from "../document";
 import {fixedEndPath} from "../utils/common";
-import { KoaMiddleware } from '../../src/types';
+import { KoaMiddleware } from '../types';
 
 export class FireCatController {
 

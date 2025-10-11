@@ -1,4 +1,4 @@
-import * as Router from 'koa-router';
+import * as Router from '@koa/router';
 import FireRouterGroup from "../router/group";
 import { FireCatController } from "../controller";
 import { FireDocumentHeadInterFace, KoaMiddleware } from "../types";

@@ -1,4 +1,4 @@
-import * as Router from 'koa-router';
+import * as Router from '@koa/router';
 import {FireCatController} from "../controller";
 import {isStartRouter} from "../utils/common";
 import { KoaMiddleware } from '../../src/types';
@@ -12,7 +12,7 @@ export default class FireRouterGroup {
 		this.path = isStartRouter(path) ? '' : path
 	}
 
-	concat(path: string, action: Router.IMiddleware<any, any>, methods: string) {
+	concat(path: string, action: Router.Middleware<any, any>, methods: string) {
 		if (typeof path == "string") {
 			return this.router[methods](this.path + path, action)
 		}
@@ -27,31 +27,31 @@ export default class FireRouterGroup {
 		}
 	}
 
-	get(path: string, action: Router.IMiddleware<any, any>) {
+	get(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'get')
 	}
 
-	post(path: string, action: Router.IMiddleware<any, any>) {
+	post(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'post')
 	}
 
-	del(path: string, action: Router.IMiddleware<any, any>) {
+	del(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'del')
 	}
 
-	put(path: string, action: Router.IMiddleware<any, any>) {
+	put(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'put')
 	}
 
-	update(path: string, action: Router.IMiddleware<any, any>) {
+	update(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'update')
 	}
 
-	head(path: string, action: Router.IMiddleware<any, any>) {
+	head(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'head')
 	}
 
-	all(path: string, action: Router.IMiddleware<any, any>) {
+	all(path: string, action: Router.Middleware<any, any>) {
 		return this.concat(path, action, 'all')
 	}
 
