@@ -3,6 +3,8 @@ import {
   Context,
   DecoratorDocDesInterFace,
   DecoratorStoreRouterInterFace,
+  FireRouteDefinition,
+  FireRouteMethod,
   InterceptorArrayInterface,
   InterceptorType
 } from "../types";
@@ -11,29 +13,19 @@ import { FireStore } from "../store";
 
 export class DecoratorRepository {
 
-  private routers: DecoratorStoreRouterInterFace[] = []
-  private docDeses: DecoratorDocDesInterFace[] = []
-
+  private routes: DecoratorStoreRouterInterFace[] = []
+  private docDescriptions: Map<string, string> = new Map();
   private middlewares: { [key: string]: InterceptorArrayInterface[] } = {};
-  private interceptors: InterceptorArrayInterface[] = [];
 
-  addInterceptor(interceptor: any) {
-    this.interceptors.unshift(interceptor);
-  }
+  addRoute(handler: Function, path: string, method: FireRouteMethod, propertyKey: string) {
+    const betterPath = /^\//.test(path) ? path : `/${path}`;
 
-  addRoute(decorator, path: string, method: string, propertyKey: string) {
-
-    let betterPath = path
-    if (!/^\//.test(betterPath)) {
-      betterPath = '/' + betterPath
-    }
-
-    this.routers.push({
+    this.routes.push({
       path: betterPath,
-      controller: decorator.value,
+      controller: handler,
       method,
       propertyKey
-    })
+    });
   }
 
   addMiddleware(propertyKey: string, middleware: any) {
@@ -44,23 +36,36 @@ export class DecoratorRepository {
   }
 
   public addDocDeses(doc: DecoratorDocDesInterFace) {
-    this.docDeses.push(doc)
+    this.docDescriptions.set(doc.propertyKey, doc.description);
   }
 
   public getDocDeses() {
-    return this.docDeses;
-  }
-
-  getInterceptors() {
-    return this.interceptors;
+    return Array.from(this.docDescriptions.entries()).map(([propertyKey, description]) => ({
+      propertyKey,
+      description
+    }));
   }
 
   getRoutes() {
-    return this.routers;
+    return this.routes.map(route => ({
+      ...route,
+      description: this.docDescriptions.get(route.propertyKey)
+    }));
   }
 
   getMiddlewares(propertyKey: string) {
     return this.middlewares[propertyKey] || [];
+  }
+
+  getRouteDefinitions(): FireRouteDefinition[] {
+    return this.getRoutes().map(route => ({
+      method: route.method,
+      path: route.path,
+      propertyKey: route.propertyKey,
+      handler: route.controller,
+      description: route.description,
+      middlewares: this.getMiddlewares(route.propertyKey)
+    }));
   }
 }
 

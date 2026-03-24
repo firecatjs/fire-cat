@@ -9,6 +9,7 @@ export interface FireValidatorErrorType {
 }
 
 export type KoaMiddleware = (ctx: Context, next: Koa.Next) => Promise<void>;
+export type FireRouteMethod = 'all' | 'del' | 'get' | 'head' | 'patch' | 'post' | 'put';
 
 export interface SyncCheckFunction extends Validator.SyncCheckFunction {}
 
@@ -29,13 +30,22 @@ export interface InterceptorArrayInterface {
 export interface DecoratorStoreRouterInterFace {
   path: string;
   controller: Function;
-  method: string;
+  method: FireRouteMethod;
   propertyKey: string;
   description?: string;
 }
 export interface DecoratorDocDesInterFace {
   propertyKey: string;
   description: string;
+}
+
+export interface FireRouteDefinition {
+  method: FireRouteMethod;
+  path: string;
+  propertyKey: string;
+  handler: Function;
+  description?: string;
+  middlewares: InterceptorArrayInterface[];
 }
 
 export interface CreateSchemaInterFace {
@@ -45,8 +55,7 @@ export interface CreateSchemaInterFace {
 
 export interface FireDocumentStoreInterFace {
   path: string;
-  context: DecoratorRepository;
-  target: any;
+  routes: FireRouteDefinition[];
 }
 
 export interface FireDocumentHeadInterFace {

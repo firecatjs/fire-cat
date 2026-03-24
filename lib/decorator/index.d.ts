@@ -1,18 +1,25 @@
-import { Context, DecoratorDocDesInterFace, DecoratorStoreRouterInterFace, InterceptorArrayInterface, InterceptorType } from "../types";
+import { Context, DecoratorDocDesInterFace, FireRouteDefinition, FireRouteMethod, InterceptorArrayInterface, InterceptorType } from "../types";
 import 'reflect-metadata';
 export declare class DecoratorRepository {
-    private routers;
-    private docDeses;
+    private routes;
+    private docDescriptions;
     private middlewares;
-    private interceptors;
-    addInterceptor(interceptor: any): void;
-    addRoute(decorator: any, path: string, method: string, propertyKey: string): void;
+    addRoute(handler: Function, path: string, method: FireRouteMethod, propertyKey: string): void;
     addMiddleware(propertyKey: string, middleware: any): void;
     addDocDeses(doc: DecoratorDocDesInterFace): void;
-    getDocDeses(): DecoratorDocDesInterFace[];
-    getInterceptors(): InterceptorArrayInterface[];
-    getRoutes(): DecoratorStoreRouterInterFace[];
+    getDocDeses(): {
+        propertyKey: string;
+        description: string;
+    }[];
+    getRoutes(): {
+        description: string;
+        path: string;
+        controller: Function;
+        method: FireRouteMethod;
+        propertyKey: string;
+    }[];
     getMiddlewares(propertyKey: string): InterceptorArrayInterface[];
+    getRouteDefinitions(): FireRouteDefinition[];
 }
 export declare function FireDecoratorController(): (constructor: Function) => void;
 export declare class FireCatDecorator {
