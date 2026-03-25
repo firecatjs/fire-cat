@@ -50,7 +50,7 @@ yarn
 # or
 npm install
 ```
-Please follow the documentation at [firecat document](https://firecat.totoro.top/)
+Please follow the documentation at [firecat document](https://docs-93k.pages.dev/)
 
 ## license
 [MIT](https://github.com/Jon-Millent/fire-cat/blob/main/LICENSE)
