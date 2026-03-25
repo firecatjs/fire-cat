@@ -1,49 +1,43 @@
 import * as Router from '@koa/router';
 import {getDecoratorRepositoryController} from "../decorator";
 import 'reflect-metadata'
-import {FireDocument} from "../document";
-import {fixedEndPath} from "../utils/common";
-import { KoaMiddleware } from '../types';
+import {fixedEndPath, joinRoutePaths} from "../utils/common";
+import {FireRouteDefinition, KoaMiddleware} from '../types';
 
 export class FireCatController {
 
-  // 绑定构造的router
-  public decoratorBindRouter(router: Router, subPath: string, context: any, middlewares: KoaMiddleware[] = []) {
-
-    const store = getDecoratorRepositoryController(this)
-
-    if (store) {
-      try {
-        const list = store.getRoutes()
-        const docDesList = store.getDocDeses()
-        
-        list.forEach(item => {
-
-          const ins = store.getMiddlewares(item.propertyKey)
-
-          const concatPath = subPath + item.path
-
-          // replace end "/" of path
-          router[item.method](
-            fixedEndPath(concatPath), 
-            ...[
-              ...middlewares,
-              ...ins.map(i => i.controller.bind(context))
-            ], 
-            item.controller.bind(context)
-          )
-
-          docDesList.forEach(docItem => {
-            if (docItem.propertyKey == item.propertyKey) {
-              item.description = docItem.description
-            }
-          })
-        })
-        FireDocument.appendDocument(subPath, store, this)
-      } catch (e) {
-      }
+  public getRouteDefinitions(): FireRouteDefinition[] {
+    const store = getDecoratorRepositoryController(this);
+    if (!store) {
+      return [];
     }
 
+    return store.getRouteDefinitions();
+  }
+
+  // 绑定构造的router
+  public decoratorBindRouter(
+    router: Router,
+    subPath: string,
+    context: any,
+    middlewares: KoaMiddleware[] = []
+  ): FireRouteDefinition[] {
+    const definitions = this.getRouteDefinitions().map(definition => ({
+      ...definition,
+      path: fixedEndPath(joinRoutePaths(subPath, definition.path))
+    }));
+
+    definitions.forEach(definition => {
+      const routeMiddlewares = definition.middlewares.map(item => item.controller.bind(context));
+      router[definition.method](
+        definition.path,
+        ...middlewares,
+        ...routeMiddlewares,
+        definition.handler.bind(context)
+      );
+    });
+
+    return definitions;
   }
 
 }

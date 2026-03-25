@@ -11,7 +11,7 @@ export default class FireCat {
         this.koa.use(async (ctx, next) => {
             try {
                 await next();
-            } catch (err) {
+            } catch (err: any) {
                 ctx.status = 500;
                 ctx.app.emit('error', err, ctx);
                 this.onError(ctx, err)
@@ -20,6 +20,11 @@ export default class FireCat {
     }
 
     onError(ctx: Context, err: Error) {
-        // console.log(err)
+        if (!ctx.body) {
+            ctx.body = {
+                success: false,
+                message: err.message,
+            };
+        }
     }
 }

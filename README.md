@@ -22,8 +22,8 @@ An elegant Node.js framework based on Koajs
 
 
 ## Document
-[English Doc](https://firecat.totoro.top) 
-[中文文档](https://firecat.totoro.top/zh/)
+[English Doc](https://docs-93k.pages.dev/) 
+[中文文档](https://docs-93k.pages.dev/zh/)
 
 ## Features
 * Develop hot updates
@@ -50,7 +50,7 @@ yarn
 # or
 npm install
 ```
-Please follow the documentation at [firecat document](https://firecat.totoro.top/)
+Please follow the documentation at [firecat document](https://docs-93k.pages.dev/)
 
 ## license
 [MIT](https://github.com/Jon-Millent/fire-cat/blob/main/LICENSE)

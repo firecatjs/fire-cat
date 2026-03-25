@@ -1,14 +1,10 @@
 import {FireCatDecorator, getDecoratorRepositoryController} from '../../decorator'
-import {InterceptorType} from "../../types";
+import {FireRouteMethod, InterceptorType} from "../../types";
 
-function registerRouterPut(target, propertyKey, decorator, path: string, method: string) {
-  try {
-    const store = getDecoratorRepositoryController(target)
-    if (store) {
-      store.addRoute(decorator, path, method, propertyKey)
-    }
-  } catch (e) {
-    //
+function registerRouterPut(target, propertyKey, descriptor, path: string, method: FireRouteMethod) {
+  const store = getDecoratorRepositoryController(target)
+  if (store) {
+    store.addRoute(descriptor.value, path, method, propertyKey)
   }
 }
 
@@ -30,6 +26,8 @@ export function Del(path: string) {
   })
 }
 
+export const Delete = Del;
+
 export function Head(path: string) {
   return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
     registerRouterPut(target, propertyKey, decorator, path, 'head')
@@ -38,9 +36,11 @@ export function Head(path: string) {
 
 export function Update(path: string) {
   return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
-    registerRouterPut(target, propertyKey, decorator, path, 'update')
+    registerRouterPut(target, propertyKey, decorator, path, 'patch')
   })
 }
+
+export const Patch = Update;
 
 export function Put(path: string) {
   return FireCatDecorator.registerImplement((target, propertyKey, decorator)=> {
@@ -56,13 +56,14 @@ export function All(path: string) {
 
 export function Request() {
   return FireCatDecorator.registerInterceptor(async (ctx, next)=> {
-    if (ctx.method == 'GET') {
-      ctx.request.body = {
-        ...(ctx.request.query || {})
+    const query = ctx.request.query || {}
+    const body = ctx.request.body || {}
+    ctx.request.body = ctx.method === 'GET'
+      ? {...query}
+      : {
+        ...query,
+        ...body
       }
-    } else {
-      ctx.request.body = ctx.request.body || {}
-    }
     await next()
   }, InterceptorType.WRAP)
 }
